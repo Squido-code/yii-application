@@ -15,8 +15,15 @@ return [
         'user' => [
             'class' => Da\User\Module::class,
             'administratorPermissionName' => 'admin',
+            'rememberLoginLifespan' => 1,
             'classMap' => [
                 'User' => common\models\User::class,
+            ],
+            'controllerMap' => [
+                'security' => [
+                    'class' => Da\User\Controller\SecurityController::class,
+                    'on beforeAuthenticate' => ['app\components\SocialNetworkHandler', 'beforeAuthenticate'],
+                ],
             ],
         ],
     ],
@@ -53,7 +60,27 @@ return [
             'rules' => [
             ],
         ],
-
+//        componente para configurar los clientes para login mediante social websites
+//        'authClientCollection' => [
+//            'class' => 'yii\authclient\Collection',
+//            'clients' => [
+//                'google' => [
+//                    'class' => 'Da\User\AuthClient\Google',
+//                    'clientId' => '725049761356-sau39tmqkj0avjs2bbtck3u1qeqcc5io.apps.googleusercontent.com',
+//                    'clientSecret' => 'bhZIM7acjRQkuiqEQvDCGSLX',
+//                ],
+//            ],
+//        ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'Google' => [
+                    'class' => 'Da\User\AuthClient\Google',
+                    'clientId' => '725049761356-sau39tmqkj0avjs2bbtck3u1qeqcc5io.apps.googleusercontent.com',
+                    'clientSecret' => 'bhZIM7acjRQkuiqEQvDCGSLX'
+                ]
+            ]
+        ],
     ],
     'params' => $params,
 

@@ -1,20 +1,20 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "c98ef00e5255fc8f03cd802f315ce1df",
-    "packages": [
-        {
-            "name": "2amigos/yii2-selectize-widget",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/2amigos/yii2-selectize-widget.git",
-                "reference": "9762a34d1095f15b60f46b876dad245011755bfc"
-            },
-            "dist": {
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "1fab6c50f48e8acc423cf40cb11433af",
+  "packages": [
+    {
+      "name": "2amigos/yii2-selectize-widget",
+      "version": "1.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/2amigos/yii2-selectize-widget.git",
+        "reference": "9762a34d1095f15b60f46b876dad245011755bfc"
+      },
+      "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/2amigos/yii2-selectize-widget/zipball/9762a34d1095f15b60f46b876dad245011755bfc",
                 "reference": "9762a34d1095f15b60f46b876dad245011755bfc",
