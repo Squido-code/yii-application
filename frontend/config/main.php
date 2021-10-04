@@ -14,21 +14,16 @@ return [
     'modules' => [
         'user' => [
             'class' => Da\User\Module::class,
-            // ...other configs from here: [Configuration Options](installation/configuration-options.md), e.g.
-            'administrators' => ['admin'], // this is required for accessing administrative actions
-            // 'generatePasswords' => true,
-            // 'switchIdentitySessionKey' => 'myown_usuario_admin_user_key',
+            'administratorPermissionName' =>'admin',
         ],
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'Da\User\Component\AuthDbManagerComponent',
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-//        'user' => [
-//            'identityClass' => Da\User\Module::class,
-//            'enableAutoLogin' => true,
-//            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-//        ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
