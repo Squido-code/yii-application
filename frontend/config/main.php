@@ -14,7 +14,10 @@ return [
     'modules' => [
         'user' => [
             'class' => Da\User\Module::class,
-            'administratorPermissionName' =>'admin',
+            'administratorPermissionName' => 'admin',
+            'classMap' => [
+                'User' => common\models\User::class,
+            ],
         ],
     ],
     'components' => [
@@ -40,7 +43,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => true,
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
