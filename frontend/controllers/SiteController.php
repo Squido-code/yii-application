@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\LoginForm;
+use Da\User\Model\User;
 use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
@@ -263,6 +264,9 @@ class SiteController extends Controller
 
     public function actionUserPanel()
     {
-
+        $user_id = Yii::$app->user->id;
+        $model = User::find()->where(['id' => $user_id])->one();
+//        echo "<pre>"; print_r($model); exit();
+        return $this->render('userpanel', ['data' => $model]);
     }
 }

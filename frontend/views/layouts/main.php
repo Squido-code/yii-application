@@ -51,6 +51,7 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
+        $menuItems[] = ['label' => 'User panel', 'url' => ['/site/user-panel']];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
