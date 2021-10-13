@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+
 use common\models\LoginForm;
 use Da\User\Model\User;
 use frontend\models\ContactForm;
@@ -93,6 +94,7 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
             return $this->goBack();
         }
 
@@ -160,6 +162,7 @@ class SiteController extends Controller
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
             return $this->goHome();
         }
@@ -265,8 +268,9 @@ class SiteController extends Controller
     public function actionUserPanel()
     {
         $user_id = Yii::$app->user->id;
-        $model = User::find()->where(['id' => $user_id])->one();
-//        echo "<pre>"; print_r($model); exit();
-        return $this->render('userpanel', ['data' => $model]);
+        $user = User::find()->where(['id' => $user_id])->one();
+        return $this->render('userpanel', ['user' => $user]);
     }
+    
+
 }

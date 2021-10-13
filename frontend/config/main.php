@@ -33,6 +33,7 @@ return [
         ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'enableCsrfValidation' => false,
         ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
@@ -57,20 +58,12 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => array(
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ),
         ],
-//        componente para configurar los clientes para login mediante social websites
-//        'authClientCollection' => [
-//            'class' => 'yii\authclient\Collection',
-//            'clients' => [
-//                'google' => [
-//                    'class' => 'Da\User\AuthClient\Google',
-//                    'clientId' => '725049761356-sau39tmqkj0avjs2bbtck3u1qeqcc5io.apps.googleusercontent.com',
-//                    'clientSecret' => 'bhZIM7acjRQkuiqEQvDCGSLX',
-//                ],
-//            ],
-//        ],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
             'clients' => [
