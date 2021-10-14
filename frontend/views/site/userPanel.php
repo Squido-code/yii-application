@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 $this->title = 'User panel';
 $this->registerJsFile('https://js.stripe.com/v3/');
-$this->registerJsFile(Yii::getAlias('@web') . '/js/checkoutDonation.js');
+$this->registerJsFile(Yii::getAlias('@web') . '/js/checkout.js');
 ?>
 <div class="container">
     <h1>Panel de Usuario</h1>
@@ -24,7 +24,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/checkoutDonation.js');
             <div style="color:#999;margin:1em 0">
                 Contribuye con 1€ para mejorar la web
             </div>
-            <button id="btn" class="btn btn-primary btn-xs">Donacion</button>
+            <button id="donacion" class="btn btn-primary btn-xs">Donacion</button>
         </div>
     </div>
     <hr>
@@ -35,7 +35,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/checkoutDonation.js');
                 <?= HTMl::img(Yii::getAlias('@web') . '/img/bronze.jpg', ['class' => 'card-img-top', 'style' => 'width: 286px; height: 180px;']) ?>
                 <div class="card-body">
                     <h5 class="card-title">Subscripción bronze</h5>
-                    <button id="btn" class="btn btn-primary btn-xs">Únete por 1€</button>
+                    <button id="bronze" class="btn btn-primary btn-xs">Únete por 1€</button>
                 </div>
             </div>
         </div>
