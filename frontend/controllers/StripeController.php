@@ -38,11 +38,15 @@ class StripeController extends \yii\web\Controller
 
     public function actionBronze()
     {
+//        echo print_r(Yii::$app->user->id);exit;
         require "../../vendor/autoload.php";
 
         $stripe = new \Stripe\StripeClient(
             Yii::$app->params['stripeApiKey']
         );
+//        $stripe->customers->create([
+//            'description' => 'My First Test Customer (created for API docs)',
+//        ]);
 
         $session = $stripe->checkout->sessions->create([
             'payment_method_types' => ['card'],
@@ -50,14 +54,24 @@ class StripeController extends \yii\web\Controller
                 'price' => 'price_1JkTrrEsSA3dVfnSyREFJQWZ',
                 'quantity' => 1,
             ]],
-//            'customer'=>'pi_3JkVqlEsSA3dVfnS1uGJGlZm',
+            'client_reference_id' => Yii::$app->user->id,
             'mode' => 'subscription',
-            'success_url' => 'https://practicas.com/success',
-            'cancel_url' => 'https://practicas.com/cancel',
+            'success_url' => 'https://practicas.com/stripe/success',
+            'cancel_url' => 'https://practicas.com/stripe/cancel',
         ]);
 
         return json_encode($session);
 
+    }
+
+    public function actionSuccess()
+    {
+        return $this->render('success');
+    }
+
+    public function actionCancel()
+    {
+        return $this->render('cancel');
     }
 
 
