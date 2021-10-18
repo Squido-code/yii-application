@@ -44,7 +44,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/checkout.js');
                 <?= HTMl::img(Yii::getAlias('@web') . '/img/silver.jpg', ['class' => 'card-img-top ', 'style' => 'width: 286px; height: 180px;']) ?>
                 <div class="card-body">
                     <h5 class="card-title">Subscripción silver</h5>
-                    <button id="btn" class="btn btn-primary btn-xs">Únete por 5€</button>
+                    <button id="silver" class="btn btn-primary btn-xs">Únete por 5€</button>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/checkout.js');
                 <?= HTMl::img(Yii::getAlias('@web') . '/img/gold.jpg', ['class' => 'card-img-top', 'style' => 'width: 286px; height: 180px;']) ?>
                 <div class="card-body">
                     <h5 class="card-title">Subscripción gold</h5>
-                    <button id="btn" class="btn btn-primary btn-xs">Únete por 10€</button>
+                    <button id="gold" class="btn btn-primary btn-xs">Únete por 10€</button>
                 </div>
             </div>
         </div>

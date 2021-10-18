@@ -9,8 +9,6 @@ class StripeController extends \yii\web\Controller
 
     public function actionDonacion()
     {
-        require "../../vendor/autoload.php";
-
         $stripe = new \Stripe\StripeClient(
             Yii::$app->params['stripeApiKey']
         );
@@ -36,22 +34,20 @@ class StripeController extends \yii\web\Controller
 
     }
 
-    public function actionBronze()
+    public function actionCheckout()
     {
-//        echo print_r(Yii::$app->user->id);exit;
-        require "../../vendor/autoload.php";
+        $productPrice = $this->getProduct(
+            Yii::$app->request->get('subscription'));
+
 
         $stripe = new \Stripe\StripeClient(
             Yii::$app->params['stripeApiKey']
         );
-//        $stripe->customers->create([
-//            'description' => 'My First Test Customer (created for API docs)',
-//        ]);
 
         $session = $stripe->checkout->sessions->create([
             'payment_method_types' => ['card'],
             'line_items' => [[
-                'price' => 'price_1JkTrrEsSA3dVfnSyREFJQWZ',
+                'price' => $productPrice,
                 'quantity' => 1,
             ]],
             'client_reference_id' => Yii::$app->user->id,
@@ -62,6 +58,22 @@ class StripeController extends \yii\web\Controller
 
         return json_encode($session);
 
+    }
+
+    private function getProduct($id)
+    {
+        switch ($id) {
+            case '1':
+                return Yii::$app->params['idSubBronze'];
+
+            case '2':
+                return Yii::$app->params['idSubSilver'];
+
+            case '3':
+                return Yii::$app->params['idSubGold'];
+
+        }
+        return null;
     }
 
     public function actionSuccess()
