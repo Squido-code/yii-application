@@ -2,12 +2,11 @@
 
 namespace common\models;
 
+use app\models\UserBillingModel;
+use Da\User\Model\User as BaseUser;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
-use yii\web\IdentityInterface;
-use Da\User\Model\User as BaseUser;
 
 /**
  * User model
@@ -211,4 +210,11 @@ class User extends BaseUser
     {
         $this->password_reset_token = null;
     }
+
+    public function getCompleteUser()
+    {
+        return $this->hasOne(UserBillingModel::class, ['id' => 'user_id'])
+            ->viaTable('user', ['id' => 'id']);
+    }
+
 }
