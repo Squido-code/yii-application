@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use app\models\UserBillingModel;
+use app\models\UserSubscriptions;
 use Da\User\Model\User as BaseUser;
 use Yii;
 use yii\base\NotSupportedException;
@@ -213,7 +213,7 @@ class User extends BaseUser
 
     public function getCompleteUser()
     {
-        return $this->hasOne(UserBillingModel::class, ['id' => 'user_id'])
+        return $this->hasOne(UserSubscriptions::class, ['id' => 'user_id'])
             ->viaTable('user', ['id' => 'id']);
     }
 

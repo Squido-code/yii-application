@@ -267,7 +267,6 @@ class SiteController extends Controller
 
     public function actionUserPanel()
     {
-        Yii::debug('ole');
         $user_id = Yii::$app->user->id;
         $user = User::find()->where(['id' => $user_id])->one();
         return $this->render('userpanel', ['user' => $user]);

@@ -2,7 +2,9 @@
 
 namespace app\models;
 
-use yii\web\User;
+
+use Da\User\Model\User;
+use Yii;
 
 /**
  * This is the model class for table "user_billing".
@@ -14,7 +16,7 @@ use yii\web\User;
  *
  * @property User $user
  */
-class UserBillingModel extends \yii\db\ActiveRecord
+class UserSubscriptions extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -53,10 +55,35 @@ class UserBillingModel extends \yii\db\ActiveRecord
     /**
      * Gets query for [[User]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return UserSubscriptions|\yii\db\ActiveQuery
      */
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+    public static function updateBilling($id, $subscription)
+    {
+        Yii::info('Entra en update billing id: ' . $id . ' Subscripcion: ' . $subscription);
+        $model = UserSubscriptions::findOne(['user_id' => $id]);
+        if (!isset($model)) {
+            $model = new UserSubscriptions();
+            $model->user_id = $id;
+        }
+        $model->sub_type = $subscription;
+        $model->sub_active = '1';
+        $model->save();
+
+    }
+
+    public static function getSubscription()
+    {
+        $id = Yii::$app->user->id;
+        $model = UserSubscriptions::findOne(['user_id' => $id]);
+        if ($model !== null) {
+            return $model->sub_type;
+        }
+        return null;
+    }
+
 }

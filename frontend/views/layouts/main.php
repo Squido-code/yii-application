@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use app\models\UserSubscriptions;
 use common\widgets\Alert;
 use frontend\assets\AppAsset;
 use yii\bootstrap4\Breadcrumbs;
@@ -52,6 +53,19 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
         $menuItems[] = ['label' => 'User panel', 'url' => ['/site/user-panel']];
+        if (UserSubscriptions::getSubscription() !== null) {
+            switch (UserSubscriptions::getSubscription()) {
+                case Yii::$app->params['idSubBronze']:
+                    $menuItems[] = ['label' => 'Ventajas Bronze', 'url' => ['/subcripcion/bronze']];
+                    break;
+                case Yii::$app->params['idSubSilver']:
+                    $menuItems[] = ['label' => 'Ventajas Silver', 'url' => ['/subcripcion/silver']];
+                    break;
+                case Yii::$app->params['idSubGold']:
+                    $menuItems[] = ['label' => 'Ventajas Gold', 'url' => ['/subcripcion/gold']];
+                    break;
+            }
+        }
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
