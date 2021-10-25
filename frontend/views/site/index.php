@@ -15,6 +15,4 @@ $this->title = 'home';
         <p class="lead">Regístrate para ver todas las opciones.</p>
 
     </div>
-
-
 </div>

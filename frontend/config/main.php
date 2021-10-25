@@ -34,7 +34,7 @@ return [
         ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
-            'enableCsrfValidation' => false,
+            'enableCsrfValidation' => true,
         ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
@@ -44,10 +44,6 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'flushInterval' => 100,
             'targets' => [
-//                [
-//                    'class' => 'yii\log\FileTarget',
-//                    'levels' => ['error', 'warning', 'trace'],
-//                ],
                 [
                     'class' => 'yii\log\FileTarget',
 
@@ -71,9 +67,10 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => array(
-                '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+//                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+//                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+//                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<controller>/<id:\d+>' => '<controller>/view',
             ),
         ],
         'authClientCollection' => [

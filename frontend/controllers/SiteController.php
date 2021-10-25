@@ -4,7 +4,6 @@ namespace frontend\controllers;
 
 
 use common\models\LoginForm;
-use Da\User\Model\User;
 use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
@@ -95,7 +94,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            return $this->goBack();
+            return $this->redirect('user-panel/index');
         }
 
         $model->password = '';
@@ -265,12 +264,6 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionUserPanel()
-    {
-        $user_id = Yii::$app->user->id;
-        $user = User::find()->where(['id' => $user_id])->one();
-        return $this->render('userpanel', ['user' => $user]);
-    }
     
 
 }
