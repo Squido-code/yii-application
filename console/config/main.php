@@ -40,6 +40,13 @@ return [
                 ],
             ],
         ],
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=maia_yii',
+            'username' => 'maia_web',
+            'password' => 'TzzXcrB4ZI6IZxMz',
+            'charset' => 'utf8',
+        ],
     ],
     'params' => $params,
 ];
