@@ -14,5 +14,12 @@ return [
             // uncomment if you want to cache RBAC items hierarchy
             // 'cache' => 'cache',
         ],
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=maia_yii',
+            'username' => 'maia_web',
+            'password' => 'TzzXcrB4ZI6IZxMz',
+            'charset' => 'utf8',
+        ],
     ],
 ];
