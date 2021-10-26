@@ -15,22 +15,22 @@ class m211026_151051_alldatabase extends Migration
 
         $tables = Yii::$app->db->schema->getTableNames();
         $dbType = $this->db->driverName;
-        $tableOptions_mysql = "CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB";
+        $tableOptions_mysql = "CHARACTER SET utf8";
         $tableOptions_mssql = "";
         $tableOptions_pgsql = "";
         $tableOptions_sqlite = "";
         /* MYSQL */
-        if (!in_array('auth_assignment', $tables)) {
-            if ($dbType == "mysql") {
-                $this->createTable('{{%auth_assignment}}', [
-                    'item_name' => 'VARCHAR(64) NOT NULL',
-                    0 => 'PRIMARY KEY (`item_name`)',
-                    'user_id' => 'VARCHAR(64) NOT NULL',
-                    1 => 'PRIMARY KEY (`user_id`)',
-                    'created_at' => 'INT(11) NULL',
-                ], $tableOptions_mysql);
-            }
-        }
+//        if (!in_array('auth_assignment', $tables)) {
+//            if ($dbType == "mysql") {
+//                $this->createTable('{{%auth_assignment}}', [
+//                    'item_name' => 'VARCHAR(64) NOT NULL',
+//                    0 => 'PRIMARY KEY (`item_name`)',
+//                    'user_id' => 'VARCHAR(64) NOT NULL',
+//                    1 => 'PRIMARY KEY (`user_id`)',
+//                    'created_at' => 'INT(11) NULL',
+//                ], $tableOptions_mysql);
+//            }
+//        }
 
         /* MYSQL */
         if (!in_array('auth_item', $tables)) {
