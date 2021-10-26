@@ -67,9 +67,6 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => array(
-//                '<controller:\w+>/<id:\d+>' => '<controller>/view',
-//                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-//                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<controller>/<id:\d+>' => '<controller>/view',
             ),
         ],
@@ -78,8 +75,8 @@ return [
             'clients' => [
                 'Google' => [
                     'class' => 'Da\User\AuthClient\Google',
-                    'clientId' => '725049761356-sau39tmqkj0avjs2bbtck3u1qeqcc5io.apps.googleusercontent.com',
-                    'clientSecret' => 'bhZIM7acjRQkuiqEQvDCGSLX'
+                    'clientId' => Yii::$app->params['googleClientId'],
+                    'clientSecret' => Yii::$app->params['googleClientSecret']
                 ]
             ]
         ],

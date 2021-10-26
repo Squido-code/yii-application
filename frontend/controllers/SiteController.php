@@ -94,7 +94,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            return $this->redirect('user-panel/index');
+            return $this->render('//user-panel/index');
         }
 
         $model->password = '';
