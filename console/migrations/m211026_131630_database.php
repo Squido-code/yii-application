@@ -212,36 +212,6 @@ class m211026_131630_database extends Migration
     public function safeDown()
     {
 
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `auth_assignment`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `auth_item`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `auth_item_child`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `auth_rule`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `product`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `profile`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `social_account`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `token`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `user`');
-        $this->execute('SET foreign_key_checks = 1;');
-        $this->execute('SET foreign_key_checks = 0');
-        $this->execute('DROP TABLE IF EXISTS `user_billing`');
-        $this->execute('SET foreign_key_checks = 1;');
 
         echo "m211026_131630_database cannot be reverted.\n";
 
