@@ -20,17 +20,16 @@ class m211026_151051_alldatabase extends Migration
         $tableOptions_pgsql = "";
         $tableOptions_sqlite = "";
         /* MYSQL */
-//        if (!in_array('auth_assignment', $tables)) {
-//            if ($dbType == "mysql") {
-//                $this->createTable('{{%auth_assignment}}', [
-//                    'item_name' => 'VARCHAR(64) NOT NULL',
-//                    0 => 'PRIMARY KEY (`item_name`)',
-//                    'user_id' => 'VARCHAR(64) NOT NULL',
-//                    1 => 'PRIMARY KEY (`user_id`)',
-//                    'created_at' => 'INT(11) NULL',
-//                ], $tableOptions_mysql);
-//            }
-//        }
+        if (!in_array('auth_assignment', $tables)) {
+            if ($dbType == "mysql") {
+                $this->createTable('{{%auth_assignment}}', [
+                    'item_name' => 'VARCHAR(64) NOT NULL',
+                    0 => 'PRIMARY KEY (`item_name`)',
+                    'user_id' => 'VARCHAR(64) NOT NULL',
+                    'created_at' => 'INT(11) NULL',
+                ], $tableOptions_mysql);
+            }
+        }
 
         /* MYSQL */
         if (!in_array('auth_item', $tables)) {
@@ -49,16 +48,15 @@ class m211026_151051_alldatabase extends Migration
         }
 
         /* MYSQL */
-//        if (!in_array('auth_item_child', $tables)) {
-//            if ($dbType == "mysql") {
-//                $this->createTable('{{%auth_item_child}}', [
-//                    'parent' => 'VARCHAR(64) NOT NULL',
-//                    0 => 'PRIMARY KEY (`parent`)',
-//                    'child' => 'VARCHAR(64) NOT NULL',
-//                    1 => 'PRIMARY KEY (`child`)',
-//                ], $tableOptions_mysql);
-//            }
-//        }
+        if (!in_array('auth_item_child', $tables)) {
+            if ($dbType == "mysql") {
+                $this->createTable('{{%auth_item_child}}', [
+                    'parent' => 'VARCHAR(64) NOT NULL',
+                    0 => 'PRIMARY KEY (`parent`)',
+                    'child' => 'VARCHAR(64) NOT NULL',
+                ], $tableOptions_mysql);
+            }
+        }
 
         /* MYSQL */
         if (!in_array('auth_rule', $tables)) {
