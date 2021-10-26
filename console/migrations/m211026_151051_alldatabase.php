@@ -49,16 +49,16 @@ class m211026_151051_alldatabase extends Migration
         }
 
         /* MYSQL */
-        if (!in_array('auth_item_child', $tables)) {
-            if ($dbType == "mysql") {
-                $this->createTable('{{%auth_item_child}}', [
-                    'parent' => 'VARCHAR(64) NOT NULL',
-                    0 => 'PRIMARY KEY (`parent`)',
-                    'child' => 'VARCHAR(64) NOT NULL',
-                    1 => 'PRIMARY KEY (`child`)',
-                ], $tableOptions_mysql);
-            }
-        }
+//        if (!in_array('auth_item_child', $tables)) {
+//            if ($dbType == "mysql") {
+//                $this->createTable('{{%auth_item_child}}', [
+//                    'parent' => 'VARCHAR(64) NOT NULL',
+//                    0 => 'PRIMARY KEY (`parent`)',
+//                    'child' => 'VARCHAR(64) NOT NULL',
+//                    1 => 'PRIMARY KEY (`child`)',
+//                ], $tableOptions_mysql);
+//            }
+//        }
 
         /* MYSQL */
         if (!in_array('auth_rule', $tables)) {
