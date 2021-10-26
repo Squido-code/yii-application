@@ -32,6 +32,7 @@ return [
             'class' => 'Da\User\Component\AuthDbManagerComponent',
         ],
         'request' => [
+            'cookieValidationKey' => '_91xtsX68YrtsiEKtCE6cUUyoskmfrC0',
             'csrfParam' => '_csrf-frontend',
             'enableCsrfValidation' => false,
         ],
