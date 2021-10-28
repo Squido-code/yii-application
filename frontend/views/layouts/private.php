@@ -1,14 +1,10 @@
 <?php
 
-/* @var $this \yii\web\View */
-
-/* @var $content string */
-
 use common\widgets\Alert;
-use frontend\assets\AppAsset;
+use frontend\assets\PrivateAsset;
 use yii\bootstrap4\Breadcrumbs;
 
-AppAsset::register($this);
+PrivateAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
     <!--head-->

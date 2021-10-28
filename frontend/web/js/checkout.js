@@ -3,6 +3,7 @@ const donacion = document.querySelector('#donacion')
 const bronze = document.querySelector('#bronze')
 const silver = document.querySelector('#silver')
 const gold = document.querySelector('#gold')
+const csrfToken = $('meta[name="csrf-token"]').attr("content");
 
 
 donacion.addEventListener('click', () => {
@@ -27,6 +28,7 @@ bronze.addEventListener('click', () => {
 
     fetch('/stripe/checkout?subscription=1', {
         method: 'POST',
+        data: {_csrf: csrfToken},
     })
         .then(function (response) {
             return response.json();
