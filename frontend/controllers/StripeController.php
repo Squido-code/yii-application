@@ -26,8 +26,8 @@ class StripeController extends \yii\web\Controller
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => 'https://practicas.com/stripe/success',
-            'cancel_url' => 'https://practicas.com/stripe/cancel',
+            'success_url' => 'https://test.maia.rocks/stripe/success',
+            'cancel_url' => 'https://test.maia.rocks/stripe/cancel',
         ]);
         return json_encode($session);
     }
@@ -50,8 +50,8 @@ class StripeController extends \yii\web\Controller
             ]],
             'client_reference_id' => Yii::$app->user->id,
             'mode' => 'subscription',
-            'success_url' => 'https://practicas.com/stripe/success',
-            'cancel_url' => 'https://practicas.com/stripe/cancel',
+            'success_url' => 'https://test.maia.rocks/stripe/success',
+            'cancel_url' => 'https://test.maia.rocks/stripe/cancel',
         ]);
 
         return json_encode($session);
