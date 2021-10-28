@@ -10,6 +10,8 @@ class WebhookController extends \yii\web\Controller
 
     public function actionStripe()
     {
+        echo print_r("Entra en webhook");
+        exit();
 
         $endpoint_secret = 'whsec_l5ALtz5xf94ep2Bq8v95DPH8B9x9iuvG';
 
