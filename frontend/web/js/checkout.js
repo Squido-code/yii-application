@@ -3,11 +3,9 @@ const donacion = document.querySelector('#donacion')
 const bronze = document.querySelector('#bronze')
 const silver = document.querySelector('#silver')
 const gold = document.querySelector('#gold')
-const csrfToken = $('meta[name="csrf-token"]').attr("content");
 
 
 donacion.addEventListener('click', () => {
-    // alert('boton funciona')
     fetch('/stripe/donacion', {
         method: 'POST',
     })
@@ -25,7 +23,6 @@ donacion.addEventListener('click', () => {
 })
 
 bronze.addEventListener('click', () => {
-
     fetch('/stripe/checkout?subscription=1', {
         method: 'POST',
         data: {_csrf: csrfToken},
@@ -44,7 +41,6 @@ bronze.addEventListener('click', () => {
 })
 
 silver.addEventListener('click', () => {
-
     fetch('/stripe/checkout?subscription=2', {
         method: 'POST',
     })
@@ -63,7 +59,6 @@ silver.addEventListener('click', () => {
 
 
 gold.addEventListener('click', () => {
-
     fetch('/stripe/checkout?subscription=3', {
         method: 'POST',
     })

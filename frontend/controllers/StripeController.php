@@ -26,12 +26,10 @@ class StripeController extends \yii\web\Controller
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => 'https://practicas.com/success',
-            'cancel_url' => 'https://practicas.com/cancel',
+            'success_url' => 'https://practicas.com/stripe/success',
+            'cancel_url' => 'https://practicas.com/stripe/cancel',
         ]);
-
         return json_encode($session);
-
     }
 
     public function actionCheckout()
