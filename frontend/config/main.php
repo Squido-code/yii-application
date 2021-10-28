@@ -1,4 +1,5 @@
 <?php
+$params = null;
 if (YII_ENV_DEV) {
     $params = array_merge(
         require __DIR__ . '/../../common/config/params-local.php',
@@ -10,12 +11,6 @@ if (YII_ENV_DEV) {
         require __DIR__ . '/params.php'
     );
 }
-$params = array_merge(
-    require __DIR__ . '/../../common/config/params.php',
-//    require __DIR__ . '/../../common/config/params-local.php',
-    require __DIR__ . '/params.php'
-//    require __DIR__ . '/params-local.php'
-);
 
 return [
     'id' => 'app-frontend',
@@ -94,8 +89,8 @@ return [
             'clients' => [
                 'Google' => [
                     'class' => 'Da\User\AuthClient\Google',
-                    'clientId' => Yii::$app->params['google_client_id'],
-                    'clientSecret' => Yii::$app->params['google_client_secret']
+                    'clientId' => $params['google_client_id'],
+                    'clientSecret' => $params['google_client_secret']
                 ]
             ]
         ],
