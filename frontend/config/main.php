@@ -1,4 +1,15 @@
 <?php
+if (YII_ENV_DEV) {
+    $params = array_merge(
+        require __DIR__ . '/../../common/config/params-local.php',
+        require __DIR__ . '/params-local.php'
+    );
+} else {
+    $params = array_merge(
+        require __DIR__ . '/../../common/config/params.php',
+        require __DIR__ . '/params.php'
+    );
+}
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
 //    require __DIR__ . '/../../common/config/params-local.php',
@@ -53,7 +64,6 @@ return [
 //                ],
                 [
                     'class' => 'yii\log\FileTarget',
-
                     'levels' => ['error', 'warning', 'info'],
                     'logVars' => [],
                     'categories' => [],
@@ -84,8 +94,8 @@ return [
             'clients' => [
                 'Google' => [
                     'class' => 'Da\User\AuthClient\Google',
-                    'clientId' => '725049761356-sau39tmqkj0avjs2bbtck3u1qeqcc5io.apps.googleusercontent.com',
-                    'clientSecret' => 'bhZIM7acjRQkuiqEQvDCGSLX'
+                    'clientId' => Yii::$app->params['google_client_id'],
+                    'clientSecret' => Yii::$app->params['google_client_secret']
                 ]
             ]
         ],

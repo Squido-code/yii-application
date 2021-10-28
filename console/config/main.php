@@ -1,11 +1,35 @@
 <?php
 
-$params = array_merge(
-    require __DIR__ . '/../../common/config/params.php',
-//    require __DIR__ . '/../../common/config/params-local.php',
-    require __DIR__ . '/params.php'
-//    require __DIR__ . '/params-local.php'
-);
+$db = null;
+
+if (YII_ENV_DEV) {
+    $params = array_merge(
+        require __DIR__ . '/../../common/config/params-local.php',
+        require __DIR__ . '/params-local.php'
+    );
+
+    $db = [
+        'class' => 'yii\db\Connection',
+        'dsn' => 'mysql:host=localhost;dbname=yii_aplicacion',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+    ];
+} else {
+    $params = array_merge(
+        require __DIR__ . '/../../common/config/params.php',
+        require __DIR__ . '/params.php'
+    );
+
+    $db = [
+        'class' => 'yii\db\Connection',
+        'dsn' => 'mysql:host=localhost;dbname=maia_yii',
+        'username' => 'maia_web',
+        'password' => 'TzzXcrB4ZI6IZxMz',
+        'charset' => 'utf8',
+    ];
+}
+
 
 return [
     'id' => 'app-console',
@@ -14,7 +38,7 @@ return [
     'controllerNamespace' => 'console\controllers',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'controllerMap' => [
         'fixture' => [
@@ -40,20 +64,7 @@ return [
                 ],
             ],
         ],
-//        'db' => [
-//            'class' => 'yii\db\Connection',
-//            'dsn' => 'mysql:host=localhost;dbname=maia_yii',
-//            'username' => 'maia_web',
-//            'password' => 'TzzXcrB4ZI6IZxMz',
-//            'charset' => 'utf8',
-//        ],
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yii_aplicacion',
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
-        ],
+        'db' => $db,
     ],
     'params' => $params,
 ];
