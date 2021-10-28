@@ -25,7 +25,6 @@ donacion.addEventListener('click', () => {
 bronze.addEventListener('click', () => {
     fetch('/stripe/checkout?subscription=1', {
         method: 'POST',
-        data: {_csrf: csrfToken},
     })
         .then(function (response) {
             return response.json();
