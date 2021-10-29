@@ -60,7 +60,7 @@ $this->title = Yii::t('usuario', 'Login');
                         Yii::t('usuario', 'Password')
                         . ($module->allowPasswordRecovery ?
                             ' (' . Html::a(
-                                Yii::t('usuario', 'Forgot password?'),
+                                Yii::t('usuario', '¿Olvidaste la contraseña?'),
                                 ['/user/recovery/request'],
                                 ['tabindex' => '5']
                             )
@@ -70,7 +70,7 @@ $this->title = Yii::t('usuario', 'Login');
                 <?= $form->field($model, 'rememberMe')->checkbox(['tabindex' => '4']) ?>
 
                 <?= Html::submitButton(
-                    Yii::t('usuario', 'Sign in'),
+                    Yii::t('usuario', 'Login'),
                     ['class' => 'btn btn-primary btn-block', 'tabindex' => '3']
                 ) ?>
 
@@ -80,14 +80,14 @@ $this->title = Yii::t('usuario', 'Login');
         <?php if ($module->enableEmailConfirmation): ?>
             <p class="text-center">
                 <?= Html::a(
-                    Yii::t('usuario', 'Didn\'t receive confirmation message?'),
+                    Yii::t('usuario', '¿no has recibido el mensaje de confirmación?'),
                     ['/user/registration/resend']
                 ) ?>
             </p>
         <?php endif ?>
         <?php if ($module->enableRegistration): ?>
             <p class="text-center">
-                <?= Html::a(Yii::t('usuario', 'Don\'t have an account? Sign up!'), ['/user/registration/register']) ?>
+                <?= Html::a(Yii::t('usuario', '¿No tienes cuenta? registrate aquí'), ['/user/registration/register']) ?>
             </p>
         <?php endif ?>
         <?= ConnectWidget::widget(

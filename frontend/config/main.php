@@ -23,7 +23,8 @@ return [
             'administratorPermissionName' => 'admin',
             'rememberLoginLifespan' => 1,
             'classMap' => [
-                'User' => common\models\User::class,
+                'User' => frontend\models\User::class,
+                'RegistrationForm'=>frontend\models\RegistrationForm::class,
             ],
             'controllerMap' => [
                 'security' => [

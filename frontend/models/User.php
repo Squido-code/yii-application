@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace frontend\models;
 
 use app\models\UserSubscriptions;
 use Da\User\Model\User as BaseUser;
@@ -29,6 +29,7 @@ class User extends BaseUser
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
+    public $password_repeat;
 
     /**
      * {@inheritdoc}

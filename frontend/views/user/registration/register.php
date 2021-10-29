@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
  */
 
 $this->title = Yii::t('usuario', 'Sign up');
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
@@ -43,19 +43,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?php if ($module->generatePasswords === false): ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
+
+                    <?= $form->field($model, 'password_repeat')->passwordInput() ?>
                 <?php endif ?>
 
                 <?php if ($module->enableGdprCompliance): ?>
                     <?= $form->field($model, 'gdpr_consent')->checkbox(['value' => 1]) ?>
                 <?php endif ?>
 
-                <?= Html::submitButton(Yii::t('usuario', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
+                <?= Html::submitButton(Yii::t('usuario', 'Registrate'), ['class' => 'btn btn-success btn-block']) ?>
 
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
         <p class="text-center">
-            <?= Html::a(Yii::t('usuario', 'Already registered? Sign in!'), ['/user/security/login']) ?>
+            <?= Html::a(Yii::t('usuario', '¿Estas registrado? logueate aqui'), ['/user/security/login']) ?>
         </p>
     </div>
 </div>
