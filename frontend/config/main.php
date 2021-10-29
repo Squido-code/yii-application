@@ -37,6 +37,13 @@ return [
         ],
     ],
     'components' => [
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@Da/User/resources/views' => '@app/views/user'
+                ]
+            ]
+        ],
         'authManager' => [
             'class' => 'Da\User\Component\AuthDbManagerComponent',
         ],
