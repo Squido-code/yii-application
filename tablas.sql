@@ -123,7 +123,9 @@ CREATE TABLE `profile`
     `website`        varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
     `timezone`       varchar(40) COLLATE utf8_unicode_ci  DEFAULT NULL,
     `bio`            text COLLATE utf8_unicode_ci         DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `profile`
@@ -131,7 +133,7 @@ CREATE TABLE `profile`
 
 INSERT INTO `profile` (`user_id`, `name`, `public_email`, `gravatar_email`, `gravatar_id`, `location`, `website`,
                        `timezone`, `bio`)
-VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 -- --------------------------------------------------------
@@ -168,16 +170,18 @@ CREATE TABLE `token`
 (
     `user_id`    int(11) DEFAULT NULL,
     `code`       varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-    `type`       smallint(6) NOT NULL,
-    `created_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+    `type`       smallint(6)                         NOT NULL,
+    `created_at` int(11)                             NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `token`
 --
 
 INSERT INTO `token` (`user_id`, `code`, `type`, `created_at`)
-VALUES (9, 'UmWvokP8zrp2CcGa9ThaCTWL4TCy6ZlT', 0, 1635858588),
+VALUES (9, 'UmWvokP8zrp2CcGa9ThaCTWL4TCy6ZlT', 0, 1635858588);
 
 
 -- --------------------------------------------------------
@@ -222,7 +226,7 @@ INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `auth_key`, `unc
                     `gdpr_deleted`, `verification_token`, `status`)
 VALUES (1, 'admin', 'email@example.com', '$2y$10$JDr41ioXe439PtY5Z95H/.AVEXvlo9z/8wdifD6zaThjrWOyokhxW',
         '50p_IBw5V6Dhyfqa3K6epjJ1Lc0Vxa17', NULL, NULL, 0, 1633093461, NULL, 1633093462, 1633093462, 1633351695,
-        '127.0.0.1', '', 0, 1633093462, 0, NULL, 0, NULL, 10),
+        '127.0.0.1', '', 0, 1633093462, 0, NULL, 0, NULL, 10);
 
 
 -- --------------------------------------------------------
@@ -280,17 +284,7 @@ ALTER TABLE `auth_item_child`
 ALTER TABLE `auth_rule`
     ADD PRIMARY KEY (`name`);
 
---
--- Indices de la tabla `migration`
---
-ALTER TABLE `migration`
-    ADD PRIMARY KEY (`version`);
 
---
--- Indices de la tabla `product`
---
-ALTER TABLE `product`
-    ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `profile`
@@ -335,8 +329,7 @@ ALTER TABLE `user_billing`
 --
 -- AUTO_INCREMENT de la tabla `product`
 --
-ALTER TABLE `product`
-    MODIFY `id` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 
 --
 -- AUTO_INCREMENT de la tabla `social_account`
