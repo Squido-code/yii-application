@@ -23,9 +23,9 @@ time_zone = "+00:00";
 -- Base de datos: `yii_aplicacion`
 --
 CREATE
-DATABASE IF NOT EXISTS `yii_aplicacion` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+DATABASE IF NOT EXISTS `maia_yii` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE
-`yii_aplicacion`;
+`maia_yii`;
 
 -- --------------------------------------------------------
 
