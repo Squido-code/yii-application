@@ -40,12 +40,7 @@ CREATE TABLE `auth_assignment`
     `created_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `auth_assignment`
---
 
-INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`)
-VALUES ('admin', '1', 1633093462);
 
 -- --------------------------------------------------------
 
@@ -64,13 +59,7 @@ CREATE TABLE `auth_item`
     `updated_at`  int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `auth_item`
---
 
-INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`)
-VALUES ('admin', 1, 'Administrator', NULL, NULL, 1633093461, 1633093461),
-       ('user-management', 2, 'User Management', NULL, NULL, 1633093461, 1633093461);
 
 -- --------------------------------------------------------
 
@@ -84,12 +73,7 @@ CREATE TABLE `auth_item_child`
     `child`  varchar(64) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `auth_item_child`
---
 
-INSERT INTO `auth_item_child` (`parent`, `child`)
-VALUES ('admin', 'user-management');
 
 -- --------------------------------------------------------
 
@@ -127,13 +111,7 @@ CREATE TABLE `profile`
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `profile`
---
 
-INSERT INTO `profile` (`user_id`, `name`, `public_email`, `gravatar_email`, `gravatar_id`, `location`, `website`,
-                       `timezone`, `bio`)
-VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 -- --------------------------------------------------------
@@ -176,12 +154,7 @@ CREATE TABLE `token`
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `token`
---
 
-INSERT INTO `token` (`user_id`, `code`, `type`, `created_at`)
-VALUES (9, 'UmWvokP8zrp2CcGa9ThaCTWL4TCy6ZlT', 0, 1635858588);
 
 
 -- --------------------------------------------------------
@@ -244,13 +217,7 @@ CREATE TABLE `user_billing`
     `stripe_customer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `user_billing`
---
 
-INSERT INTO `user_billing` (`id`, `user_id`, `sub_active`, `sub_type`, `stripe_customer`)
-VALUES (1, 1, 1, 'price_1JkTr', 'cus_KWOBZ1RfoZa6QR'),
-       (2, 2, 1, 'price_1JkoxuEsSA3dVfnSWcrN2bTw', 'cus_KWOixlnqEg9fV9');
 
 --
 -- Índices para tablas volcadas
@@ -398,8 +365,40 @@ ALTER TABLE `token`
 --
 ALTER TABLE `user_billing`
     ADD CONSTRAINT `fk_id(user)_user_id(user_billing)` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
+
+--
+-- Volcado de datos para la tabla `auth_assignment`
+--
+
+INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`)
+VALUES ('admin', '1', 1633093462);
+
+--
+-- Volcado de datos para la tabla `auth_item`
+--
+
+INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`)
+VALUES ('admin', 1, 'Administrator', NULL, NULL, 1633093461, 1633093461),
+       ('user-management', 2, 'User Management', NULL, NULL, 1633093461, 1633093461);
+
+--
+-- Volcado de datos para la tabla `auth_item_child`
+--
+
+INSERT INTO `auth_item_child` (`parent`, `child`)
+VALUES ('admin', 'user-management');
+
+--
+-- Volcado de datos para la tabla `profile`
+--
+
+INSERT INTO `profile` (`user_id`, `name`, `public_email`, `gravatar_email`, `gravatar_id`, `location`, `website`,
+                       `timezone`, `bio`)
+VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
