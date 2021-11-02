@@ -24,7 +24,7 @@ return [
             'rememberLoginLifespan' => 1,
             'classMap' => [
                 'User' => frontend\models\User::class,
-                'RegistrationForm'=>frontend\models\RegistrationForm::class,
+                'RegistrationForm' => frontend\models\RegistrationForm::class,
             ],
             'controllerMap' => [
                 'security' => [
@@ -32,6 +32,8 @@ return [
                     'on beforeAuthenticate' => ['app\components\SocialNetworkHandler', 'beforeAuthenticate'],
                 ],
             ],
+            'enableEmailConfirmation' => 'false',
+            'allowUnconfirmedEmailLogin' => 'true',
         ],
         'utility' => [
             'class' => 'c006\utility\migration\Module',
