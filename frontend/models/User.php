@@ -54,6 +54,7 @@ class User extends BaseUser
      */
     public function rules()
     {
+        // self::STATUS_INACTIVE changed to allow register without email verification.
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
@@ -212,6 +213,11 @@ class User extends BaseUser
         $this->password_reset_token = null;
     }
 
+    /**
+     * Generates User with Userbilling attached info
+     * @return \yii\db\ActiveQuery
+     * @throws \yii\base\InvalidConfigException
+     */
     public function getCompleteUser()
     {
         return $this->hasOne(UserSubscriptions::class, ['id' => 'user_id'])

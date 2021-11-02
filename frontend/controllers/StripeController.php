@@ -6,6 +6,14 @@ use Yii;
 
 class StripeController extends \yii\web\Controller
 {
+    private $urls = null;
+
+    public function init()
+    {
+        parent::init();
+        $this->urls = $this->enviromentUrl();
+    }
+
 
     public function actionDonacion()
     {
@@ -26,8 +34,8 @@ class StripeController extends \yii\web\Controller
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => 'https://test.maia.rocks/stripe/success',
-            'cancel_url' => 'https://test.maia.rocks/stripe/cancel',
+            'success_url' => $this->urls['success_url'],
+            'cancel_url' => $this->urls['cancel_url'],
         ]);
         return json_encode($session);
     }
@@ -50,8 +58,8 @@ class StripeController extends \yii\web\Controller
             ]],
             'client_reference_id' => Yii::$app->user->id,
             'mode' => 'subscription',
-            'success_url' => 'https://test.maia.rocks/stripe/success',
-            'cancel_url' => 'https://test.maia.rocks/stripe/cancel',
+            'success_url' => $this->urls['success_url'],
+            'cancel_url' => $this->urls['cancel_url'],
         ]);
 
         return json_encode($session);
@@ -84,5 +92,24 @@ class StripeController extends \yii\web\Controller
         return $this->render('cancel');
     }
 
+    /**
+     * Return the right succes/cancel url depends on the environment
+     * @return string[]
+     */
+    private function enviromentUrl()
+    {
+        $urls = null;
 
+        if (YII_ENV_DEV) {
+            return $urls = [
+                'success_url' => 'https://practicas.com/stripe/success',
+                'cancel_url' => 'https://practicas.com/stripe/cancel',
+            ];
+        } else {
+            return $urls = [
+                'success_url' => 'https://test.maia.rocks/stripe/success',
+                'cancel_url' => 'https://test.maia.rocks/stripe/cancel',
+            ];
+        }
+    }
 }

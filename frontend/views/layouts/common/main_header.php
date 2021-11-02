@@ -1,7 +1,7 @@
 <header>
     <?php
 
-    use app\models\UserSubscriptions;
+    use app\models\UserBilling;
     use yii\bootstrap4\Html;
     use yii\bootstrap4\Nav;
     use yii\bootstrap4\NavBar;
@@ -31,8 +31,8 @@
             . Html::endForm()
             . '</li>';
         $menuItems[] = ['label' => 'User panel', 'url' => ['/user-panel/index']];
-        if (UserSubscriptions::getSubscription() !== null) {
-            switch (UserSubscriptions::getSubscription()) {
+        if (UserBilling::getSubscription() !== null) {
+            switch (UserBilling::getSubscription()) {
                 case Yii::$app->params['idSubBronze']:
                     $menuItems[] = ['label' => 'Ventajas Bronze', 'url' => ['/subcripcion/bronze']];
                     break;

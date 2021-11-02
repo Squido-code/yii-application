@@ -10,7 +10,7 @@ class WebhookController extends \yii\web\Controller
 
     public function actionStripe()
     {
-        $endpoint_secret = 'whsec_l5ALtz5xf94ep2Bq8v95DPH8B9x9iuvG';
+        $endpoint_secret = 'whsec_hPsv8CHR5j1F1qYEssBiriOXzgLnYL9E';
 
         $payload = Yii::$app->request->getRawBody();
 

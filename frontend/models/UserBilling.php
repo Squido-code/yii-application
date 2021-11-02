@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Da\User\Model\User;
+use Yii;
 
 /**
  * This is the model class for table "user_billing".
@@ -61,5 +62,16 @@ class UserBilling extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public static function getSubscription()
+    {
+        $id = Yii::$app->user->id;
+        $model = UserSubscriptions::findOne(['user_id' => $id]);
+
+        if ($model !== null) {
+            return $model->sub_type;
+        }
+        return null;
     }
 }
