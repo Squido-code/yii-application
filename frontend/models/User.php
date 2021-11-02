@@ -2,14 +2,14 @@
 
 namespace frontend\models;
 
-use app\models\UserSubscriptions;
+use app\models\UserBilling;
 use Da\User\Model\User as BaseUser;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 
 /**
- * User model
+ * User models
  *
  * @property integer $id
  * @property string $username
@@ -25,6 +25,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class User extends BaseUser
 {
+    public $status = null;
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
@@ -54,11 +55,12 @@ class User extends BaseUser
      */
     public function rules()
     {
-        // self::STATUS_INACTIVE changed to allow register without email verification.
-        return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
+        // self::STATUS_INACTIVE changed to STATUS_ACTIVE allow register without email verification.
+        return array_merge(parent::rules(), [
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
-        ];
+        ]);
+
     }
 
     /**
@@ -66,7 +68,8 @@ class User extends BaseUser
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+//        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => $id]);
     }
 
     /**
@@ -85,7 +88,9 @@ class User extends BaseUser
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+//        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username]);
+
     }
 
     /**
@@ -172,7 +177,7 @@ class User extends BaseUser
     }
 
     /**
-     * Generates password hash from password and sets it to the model
+     * Generates password hash from password and sets it to the models
      *
      * @param string $password
      */
@@ -220,7 +225,7 @@ class User extends BaseUser
      */
     public function getCompleteUser()
     {
-        return $this->hasOne(UserSubscriptions::class, ['id' => 'user_id'])
+        return $this->hasOne(UserBilling::class, ['id' => 'user_id'])
             ->viaTable('user', ['id' => 'id']);
     }
 

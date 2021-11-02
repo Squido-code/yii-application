@@ -6,7 +6,7 @@ use Da\User\Model\User;
 use Yii;
 
 /**
- * This is the model class for table "user_billing".
+ * This is the models class for table "user_billing".
  *
  * @property int $id
  * @property int $user_id
@@ -67,7 +67,7 @@ class UserBilling extends \yii\db\ActiveRecord
     public static function getSubscription()
     {
         $id = Yii::$app->user->id;
-        $model = UserSubscriptions::findOne(['user_id' => $id]);
+        $model = UserSubscriptionsDeprecated::findOne(['user_id' => $id]);
 
         if ($model !== null) {
             return $model->sub_type;

@@ -21,7 +21,6 @@ return [
         'user' => [
             'class' => Da\User\Module::class,
             'administratorPermissionName' => 'admin',
-            'rememberLoginLifespan' => 1,
             'classMap' => [
                 'User' => frontend\models\User::class,
                 'RegistrationForm' => frontend\models\RegistrationForm::class,
@@ -33,7 +32,7 @@ return [
                 ],
             ],
             'enableEmailConfirmation' => 'false',
-            'allowUnconfirmedEmailLogin' => 'true',
+            'allowUnconfirmedEmailLogin' => 'false',
         ],
         'utility' => [
             'class' => 'c006\utility\migration\Module',
@@ -73,7 +72,7 @@ return [
                     'logVars' => [],
                     'categories' => [],
                     'except' => [
-                        'yii\db\*',
+//                        'yii\db\*',
                     ],
                 ],
             ],

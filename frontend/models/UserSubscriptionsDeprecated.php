@@ -7,7 +7,7 @@ use Da\User\Model\User;
 use Yii;
 
 /**
- * This is the model class for table "user_billing".
+ * This is the models class for table "user_billing".
  *
  * @property int $id
  * @property int $user_id
@@ -16,7 +16,7 @@ use Yii;
  *
  * @property User $user
  */
-class UserSubscriptions extends \yii\db\ActiveRecord
+class UserSubscriptionsDeprecated extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -55,7 +55,7 @@ class UserSubscriptions extends \yii\db\ActiveRecord
     /**
      * Gets query for [[User]].
      *
-     * @return UserSubscriptions|\yii\db\ActiveQuery
+     * @return UserSubscriptionsDeprecated|\yii\db\ActiveQuery
      */
     public function getUser()
     {
@@ -65,9 +65,9 @@ class UserSubscriptions extends \yii\db\ActiveRecord
     public static function updateBilling($id, $subscription)
     {
         Yii::info('Entra en update billing id: ' . $id . ' Subscripcion: ' . $subscription);
-        $model = UserSubscriptions::findOne(['user_id' => $id]);
+        $model = UserSubscriptionsDeprecated::findOne(['user_id' => $id]);
         if (!isset($model)) {
-            $model = new UserSubscriptions();
+            $model = new UserSubscriptionsDeprecated();
             $model->user_id = $id;
         }
         $model->sub_type = $subscription;
@@ -79,7 +79,7 @@ class UserSubscriptions extends \yii\db\ActiveRecord
     public static function getSubscription()
     {
         $id = Yii::$app->user->id;
-        $model = UserSubscriptions::findOne(['user_id' => $id]);
+        $model = UserSubscriptionsDeprecated::findOne(['user_id' => $id]);
         if ($model !== null) {
             return $model->sub_type;
         }

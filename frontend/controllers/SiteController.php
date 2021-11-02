@@ -88,17 +88,17 @@ class SiteController extends Controller
 //            return $this->goHome();
 //        }
 //
-//        $model = new LoginForm();
+//        $models = new LoginForm();
 //
-//        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+//        if ($models->load(Yii::$app->request->post()) && $models->login()) {
 //
 //            return $this->render('//user-panel/index');
 //        }
 //
-//        $model->password = '';
+//        $models->password = '';
 //
 //        return $this->render('login', [
-//            'model' => $model,
+//            'models' => $models,
 //        ]);
 //    }
 
@@ -135,7 +135,7 @@ class SiteController extends Controller
         }
 
         return $this->render('contact', [
-            'model' => $model,
+            'models' => $model,
         ]);
     }
 
@@ -156,16 +156,16 @@ class SiteController extends Controller
      */
 //    public function actionSignup()
 //    {
-//        $model = new SignupForm();
+//        $models = new SignupForm();
 //
-//        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+//        if ($models->load(Yii::$app->request->post()) && $models->signup()) {
 //
 //            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
 //            return $this->goHome();
 //        }
 //
 //        return $this->render('signup', [
-//            'model' => $model,
+//            'models' => $models,
 //        ]);
 //    }
 
@@ -188,7 +188,7 @@ class SiteController extends Controller
         }
 
         return $this->render('requestPasswordResetToken', [
-            'model' => $model,
+            'models' => $model,
         ]);
     }
 
@@ -214,7 +214,7 @@ class SiteController extends Controller
         }
 
         return $this->render('resetPassword', [
-            'model' => $model,
+            'models' => $model,
         ]);
     }
 
@@ -258,7 +258,7 @@ class SiteController extends Controller
         }
 
         return $this->render('resendVerificationEmail', [
-            'model' => $model
+            'models' => $model
         ]);
     }
 

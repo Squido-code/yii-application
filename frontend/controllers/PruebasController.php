@@ -3,41 +3,41 @@
 namespace frontend\controllers;
 
 
-use app\models\UserSubscriptions;
+use app\models\UserSubscriptionsDeprecated;
 
 class PruebasController extends \yii\web\Controller
 {
     public function actionPrueba()
     {
-//        $model = new UserSubscriptions();
-//        $model->user_id ='2';
-//        $model->sub_type = 'bronze';
-//        $model->sub_active = '1';
-//        $model = UserSubscriptions::findOne(['user_id'=>'3']);
+//        $models = new UserSubscriptionsDeprecated();
+//        $models->user_id ='2';
+//        $models->sub_type = 'bronze';
+//        $models->sub_active = '1';
+//        $models = UserSubscriptionsDeprecated::findOne(['user_id'=>'3']);
 
-//        $model = UserSubscriptions::findOne(['user_id'=>'2']);
-//        if(!isset($model)){
-//            $model = new UserSubscriptions();
-//            $model->user_id = '2';
+//        $models = UserSubscriptionsDeprecated::findOne(['user_id'=>'2']);
+//        if(!isset($models)){
+//            $models = new UserSubscriptionsDeprecated();
+//            $models->user_id = '2';
 //        }
-//        $model->sub_type = 'prueba';
-//        $model->sub_active = '1';
-//        $model->save();
+//        $models->sub_type = 'prueba';
+//        $models->sub_active = '1';
+//        $models->save();
         $userId = '2';
         $subscription = 'pruebas';
         if (isset($userId) && isset($subscription)) {
-            UserSubscriptions::updateBilling($userId, $subscription);
+            UserSubscriptionsDeprecated::updateBilling($userId, $subscription);
         }
-//        $model = UserSubscriptions::findOne(['user_id'=>$id]);
-//        if(!isset($model)){
-//            $model = new UserSubscriptions();
-//            $model->user_id = $id;
+//        $models = UserSubscriptionsDeprecated::findOne(['user_id'=>$id]);
+//        if(!isset($models)){
+//            $models = new UserSubscriptionsDeprecated();
+//            $models->user_id = $id;
 //        }
-//        $model->sub_type = $subscription;
-//        $model->sub_active = '1';
-//        $model->save();
+//        $models->sub_type = $subscription;
+//        $models->sub_active = '1';
+//        $models->save();
 //
-//        echo print_r($model); exit;
-//        $model->save();
+//        echo print_r($models); exit;
+//        $models->save();
     }
 }

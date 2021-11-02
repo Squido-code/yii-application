@@ -2,10 +2,10 @@
 
 namespace frontend\models;
 
+use common\models\User;
+use Yii;
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
-use Yii;
-use common\models\User;
 
 /**
  * Password reset form
@@ -21,7 +21,7 @@ class ResetPasswordForm extends Model
 
 
     /**
-     * Creates a form model given a token.
+     * Creates a form models given a token.
      *
      * @param string $token
      * @param array $config name-value pairs that will be used to initialize the object properties
