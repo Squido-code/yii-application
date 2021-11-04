@@ -62,17 +62,17 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'flushInterval' => 100,
             'targets' => [
-//                [
-//                    'class' => 'yii\log\FileTarget',
-//                    'levels' => ['error', 'warning', 'trace'],
-//                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning', 'trace'],
+                ],
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning', 'info'],
                     'logVars' => [],
                     'categories' => [],
                     'except' => [
-//                        'yii\db\*',
+                        'yii\db\*',
                     ],
                 ],
             ],
