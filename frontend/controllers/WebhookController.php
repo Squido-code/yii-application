@@ -10,7 +10,13 @@ class WebhookController extends \yii\web\Controller
 
     public function actionStripe()
     {
-        $endpoint_secret = 'whsec_hPsv8CHR5j1F1qYEssBiriOXzgLnYL9E';
+        $endpoint_secret = null;
+        if (YII_ENV_DEV) {
+            $endpoint_secret = 'whsec_hPsv8CHR5j1F1qYEssBiriOXzgLnYL9E';
+        } else {
+            $endpoint_secret = Yii::getAlias('stripe_webhook');
+        }
+
 
         $payload = Yii::$app->request->getRawBody();
 

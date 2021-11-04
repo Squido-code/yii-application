@@ -16,16 +16,7 @@ if (YII_ENV_DEV) {
         require __DIR__ . '/common/config/main-local.php',
         require __DIR__ . '/frontend/config/main.php'
     );
-    // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
-        'allowedIPs' => ['*']
-    ];
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
-    ];
+
 } else {
     $config = yii\helpers\ArrayHelper::merge(
         require __DIR__ . '/common/config/main.php',
