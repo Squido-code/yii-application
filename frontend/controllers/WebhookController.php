@@ -14,7 +14,6 @@ class WebhookController extends \yii\web\Controller
         if (YII_ENV_DEV) {
             $endpoint_secret = 'whsec_hPsv8CHR5j1F1qYEssBiriOXzgLnYL9E';
         } else {
-//            $endpoint_secret = Yii::getAlias('stripe_webhook');
             $endpoint_secret = 'whsec_l5ALtz5xf94ep2Bq8v95DPH8B9x9iuvG';
         }
 
@@ -61,6 +60,8 @@ class WebhookController extends \yii\web\Controller
                 if (!isset($model)) {
                     $model = new UserBilling();
                     $model->user_id = $userId;
+                    $model->sub_active = 0;
+                    $model->sub_type = 'none';
                     $model->stripe_customer = $customerId;
                 }
                 $model->stripe_customer = $customerId;
