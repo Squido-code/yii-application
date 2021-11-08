@@ -8,5 +8,4 @@ return [
     'google_client_id' => '725049761356-sau39tmqkj0avjs2bbtck3u1qeqcc5io.apps.googleusercontent.com',
     'google_client_secret' => 'bhZIM7acjRQkuiqEQvDCGSLX',
     'stripe_webhook' => 'whsec_l5ALtz5xf94ep2Bq8v95DPH8B9x9iuvG',
-
 ];
