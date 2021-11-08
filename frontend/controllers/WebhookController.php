@@ -20,7 +20,9 @@ class WebhookController extends \yii\web\Controller
 
         $payload = Yii::$app->request->getRawBody();
 
+
         Yii::info('WEBHOOK TRIGERED');
+        Yii::info(Yii::$app->request);
 
         $headers = Yii::$app->request->headers;
         $sig_header = $headers->get('stripe-signature');
