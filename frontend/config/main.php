@@ -27,7 +27,7 @@ return [
             ],
             'controllerMap' => [
                 'security' => [
-                    'class' => Da\User\Controller\SecurityController::class,
+                    'class' => frontend\controllers\SecurityController::class,
                     'on beforeAuthenticate' => ['app\components\SocialNetworkHandler', 'beforeAuthenticate'],
                 ],
             ],

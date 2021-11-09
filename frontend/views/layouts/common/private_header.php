@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Html;
+
+?>
 
 <!-- Main navbar -->
 <div class="navbar navbar-expand-lg navbar-dark navbar-static px-0">
@@ -16,59 +21,14 @@
             </a>
         </div>
 
-<!--        <div class="collapse navbar-collapse order-2 order-lg-1" id="navbar-mobile">-->
-<!--            <ul class="navbar-nav">-->
-<!--                <li class="nav-item">-->
-<!--                    <a href="#" class="navbar-nav-link">-->
-<!--                        <i class="icon-stack2 mr-3"></i>-->
-<!--                        Collapsible link-->
-<!--                    </a>-->
-<!--                </li>-->
-<!---->
-<!--                <li class="nav-item">-->
-<!--                    <a href="#" class="navbar-nav-link">-->
-<!--                        <i class="icon-people"></i>-->
-<!--                        <span class="d-lg-none ml-3">Collapsible link with icon</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!---->
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a href="#" class="navbar-nav-link" data-toggle="dropdown">-->
-<!--                        <i class="icon-bell2"></i>-->
-<!--                        <span class="d-lg-none ml-3">Collapsible link with menu</span>-->
-<!--                        <span class="badge badge-warning rounded-pill ml-auto ml-lg-0">3</span>-->
-<!--                    </a>-->
-<!---->
-<!--                    <div class="dropdown-menu">-->
-<!--                        <a href="#" class="dropdown-item">Menu item 1</a>-->
-<!--                        <a href="#" class="dropdown-item">Menu item 2</a>-->
-<!--                        <a href="#" class="dropdown-item">Menu item 3</a>-->
-<!--                        <div class="dropdown-divider"></div>-->
-<!--                        <a href="#" class="dropdown-item">Menu item 4</a>-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!---->
         <ul class="navbar-nav flex-row order-1 order-lg-2 flex-1 flex-lg-0 justify-content-end align-items-center">
-<!--            <li class="nav-item">-->
-<!--                <a href="#" class="navbar-nav-link navbar-nav-link-toggler" data-toggle="dropdown">-->
-<!--                    <i class="icon-envelop"></i>-->
-<!--                    <span class="d-none d-lg-inline-block ml-2">Link</span>-->
-<!--                </a>-->
-<!--            </li>-->
-<!---->
-<!--            <li class="nav-item">-->
-<!--                <a href="#" class="navbar-nav-link navbar-nav-link-toggler" data-toggle="dropdown">-->
-<!--                    <i class="icon-bell2"></i>-->
-<!--                    <span class="badge badge-warning rounded-pill ml-auto ml-lg-0">3</span>-->
-<!--                </a>-->
-<!--            </li>-->
-
             <li class="nav-item nav-item-dropdown-lg dropdown dropdown-user h-100">
-                <a href="#" class="navbar-nav-link navbar-nav-link-toggler d-inline-flex align-items-center h-100 dropdown-toggle" data-toggle="dropdown">
-                    <img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="rounded-pill mr-lg-2" height="34" alt="">
-                    <span class="d-none d-lg-inline-block"><?= Yii::$app->controller->user->username;?></span>
+                <a href="#"
+                   class="navbar-nav-link navbar-nav-link-toggler d-inline-flex align-items-center h-100 dropdown-toggle"
+                   data-toggle="dropdown">
+                    <img src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                         class="rounded-pill mr-lg-2" height="34" alt="">
+                    <span class="d-none d-lg-inline-block"><?= Yii::$app->user->identity->username; ?></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -79,7 +39,14 @@
                         <span class="badge badge-primary badge-pill ml-auto">2</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Menu item 4</a>
+                    <?= '<a>'
+                    . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
+                    . Html::submitButton(
+                        'Logout',
+                        ['class' => 'btn btn-link logout']
+                    )
+                    . Html::endForm()
+                    . '</a>'; ?>
                 </div>
             </li>
         </ul>

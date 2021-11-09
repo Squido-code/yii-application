@@ -67,7 +67,7 @@ class UserBilling extends \yii\db\ActiveRecord
     public static function getSubscription()
     {
         $id = Yii::$app->user->id;
-        $model = UserSubscriptionsDeprecated::findOne(['user_id' => $id]);
+        $model = self::findOne(['user_id' => $id]);
 
         if ($model !== null) {
             return $model->sub_type;
