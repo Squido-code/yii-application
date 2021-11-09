@@ -1,33 +1,28 @@
 <?php
 
-use common\widgets\Alert;
 use frontend\assets\PrivateAsset;
-use yii\bootstrap4\Breadcrumbs;
 
-PrivateAsset::register($this);
+PrivateAsset::register($this)
 ?>
 <?php $this->beginPage() ?>
     <!--head-->
     <!DOCTYPE html>
     <html lang="<?= Yii::$app->language ?>" class="h-100">
-    <?php include 'common/main_head.php' ?>
+    <?php include 'common/private_head.php' ?>
+<!--    END HEAD-->
     <!--begin body-->
-    <body class="d-flex flex-column h-100">
+    <body>
     <?php $this->beginBody() ?>
     <!--header-->
-    <?php include 'common/main_header.php' ?>
+
+    <?php include 'common/private_header.php' ?>
+<!--    /header-->
     <!--content-->
     <main role="main" class="flex-shrink-0">
-        <div class="container">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <?= Alert::widget() ?>
             <?= $content ?>
-        </div>
     </main>
     <!--footer-->
-    <?php include 'common/main_footer.php' ?>
+<?php //include 'common/main_footer.php' ?>
     <!--end body-->
     <?php $this->endBody() ?>
     </body>

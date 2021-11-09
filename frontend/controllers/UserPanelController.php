@@ -7,24 +7,23 @@ use Yii;
 
 class UserPanelController extends \yii\web\Controller
 {
+    public $user;
+
     public function beforeAction($action)
     {
         if (Yii::$app->user->isGuest) {
-//            echo print_r('entra'); exit();
-
             return $this->redirect('site/index');
         } else {
-            return $this->layout = 'private';
+            $user_id = Yii::$app->user->id;
+            $this->user = User::find()->where(['id' => $user_id])->one();
+            $this->layout = '@app/views/layouts/private';
+            return true;
         }
-
-
     }
 
     public function actionIndex()
     {
-        $user_id = Yii::$app->user->id;
-        $user = User::find()->where(['id' => $user_id])->one();
-        return $this->render('index', ['user' => $user]);
+        return $this->render('private', ['user' => $this->user]);
     }
 
 
