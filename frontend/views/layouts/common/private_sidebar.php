@@ -15,9 +15,6 @@
 
                     <div class="media-body mt-auto mb-auto">
                         <div class="font-weight-semibold"><?= Yii::$app->user->identity->username ?></div>
-                        <!--                            <div class="font-size-sm line-height-sm opacity-50">-->
-                        <!--                                Senior developer-->
-                        <!--                            </div>-->
                     </div>
 
                     <div class="ml-3 align-self-center">

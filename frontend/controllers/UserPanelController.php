@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use app\models\UserBilling;
 use Da\User\Model\User;
 use Yii;
 
@@ -31,12 +32,14 @@ class UserPanelController extends \yii\web\Controller
      */
     public function actionIndex()
     {
-        return $this->render('index', ['user' => $this->user]);
+        $subscription = UserBilling::getSubscription();
+        return $this->render('index', ['subscription' => $subscription]);
     }
 
-    public function actionProfile()
-    {
-        return $this->render('profile', ['user' => $this->user]);
-    }
+//    public function actionProfile()
+//    {
+//
+//        return $this->render('profile', ['subscription' => $subscription]);
+//    }
 
 }

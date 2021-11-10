@@ -70,7 +70,20 @@ class UserBilling extends \yii\db\ActiveRecord
         $model = self::findOne(['user_id' => $id]);
 
         if ($model !== null) {
-            return $model->sub_type;
+            return self::subscriptionIdToName($model->sub_type);
+        }
+        return null;
+    }
+
+    private static function subscriptionIdToName($id)
+    {
+        switch ($id) {
+            case Yii::$app->params['idSubBronze']:
+                return 'Bronze';
+            case Yii::$app->params['idSubSilver']:
+                return 'Silver';
+            case Yii::$app->params['idSubGold']:
+                return 'Gold';
         }
         return null;
     }
