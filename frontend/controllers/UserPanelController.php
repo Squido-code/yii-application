@@ -9,10 +9,14 @@ class UserPanelController extends \yii\web\Controller
 {
     public $user;
 
+    /** control the access to the user panel allowing only to login users
+     * @param \yii\base\Action $action
+     * @return bool|\yii\web\Response
+     */
     public function beforeAction($action)
     {
         if (Yii::$app->user->isGuest) {
-            return $this->redirect('site/index');
+            return $this->redirect('/user/login', 302)->send();
         } else {
             $user_id = Yii::$app->user->id;
             $this->user = User::find()->where(['id' => $user_id])->one();
@@ -21,10 +25,18 @@ class UserPanelController extends \yii\web\Controller
         }
     }
 
+    /**
+     * Render user panel index
+     * @return string
+     */
     public function actionIndex()
     {
-        return $this->render('private', ['user' => $this->user]);
+        return $this->render('index', ['user' => $this->user]);
     }
 
+    public function actionProfile()
+    {
+        return $this->render('profile', ['user' => $this->user]);
+    }
 
 }

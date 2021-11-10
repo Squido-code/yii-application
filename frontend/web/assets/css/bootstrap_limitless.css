@@ -1767,7 +1767,8 @@ label.custom-control {
   .navbar-dark .navbar-toggler:hover, .navbar-dark .navbar-toggler:focus {
     color: #fff; }
   .navbar-light .navbar-toggler {
-    color: #333; }
+      color: rgba(51, 51, 51, 0.75);
+  }
     .navbar-light .navbar-toggler:hover, .navbar-light .navbar-toggler:focus, .navbar-light .navbar-toggler[aria-expanded=true] {
       color: #333; }
 
@@ -2130,48 +2131,66 @@ label.custom-control {
   max-width: 30rem; }
 
 @media (max-width: 575.98px) {
-  .nav-item-dropdown-sm {
-    position: static; }
+    .nav-item-dropdown-sm {
+        position: static;
+    }
+
     .nav-item-dropdown-sm > .dropdown-menu {
-      position: absolute;
-      left: 0.625rem !important;
-      right: 0.625rem !important; } }
+        position: absolute;
+        left: 1.25rem !important;
+        right: 1.25rem !important;
+    }
+}
 
 @media (max-width: 768.98px) {
-  .nav-item-dropdown-md {
-    position: static; }
+    .nav-item-dropdown-md {
+        position: static;
+    }
+
     .nav-item-dropdown-md > .dropdown-menu {
-      position: absolute;
-      left: 0.625rem !important;
-      right: 0.625rem !important; } }
+        position: absolute;
+        left: 1.25rem !important;
+        right: 1.25rem !important;
+    }
+}
 
 @media (max-width: 991.98px) {
-  .nav-item-dropdown-lg {
-    position: static; }
+    .nav-item-dropdown-lg {
+        position: static;
+    }
+
     .nav-item-dropdown-lg > .dropdown-menu {
-      position: absolute;
-      left: 0.625rem !important;
-      right: 0.625rem !important; } }
+        position: absolute;
+        left: 1.25rem !important;
+        right: 1.25rem !important;
+    }
+}
 
 @media (max-width: 1199.98px) {
-  .nav-item-dropdown-xl {
-    position: static; }
+    .nav-item-dropdown-xl {
+        position: static;
+    }
+
     .nav-item-dropdown-xl > .dropdown-menu {
-      position: absolute;
-      left: 0.625rem !important;
-      right: 0.625rem !important; } }
+        position: absolute;
+        left: 1.25rem !important;
+        right: 1.25rem !important;
+    }
+}
 
 .nav-item-dropdown {
   position: static; }
   .nav-item-dropdown > .dropdown-menu {
-    position: absolute;
-    left: 0.625rem !important;
-    right: 0.625rem !important; }
+      position: absolute;
+      left: 1.25rem !important;
+      right: 1.25rem !important;
+  }
 
 .navbar-light {
-  color: #333;
-  background-color: #fff;
-  border-bottom-color: rgba(0, 0, 0, 0.125); }
+    color: rgba(51, 51, 51, 0.75);
+    background-color: #fff;
+    border-bottom-color: rgba(0, 0, 0, 0.125);
+}
   .navbar-light .navbar-nav .nav-link {
     color: #333; }
     .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
@@ -2184,13 +2203,15 @@ label.custom-control {
   .navbar-light .navbar-nav .nav-link.active {
     color: #333; }
   .navbar-light .navbar-nav-link {
-    color: #333; }
+      color: rgba(51, 51, 51, 0.75);
+  }
     .navbar-light .navbar-nav-link:hover, .navbar-light .navbar-nav-link:focus {
       color: #333;
       background-color: rgba(0, 0, 0, 0.04); }
     .navbar-light .navbar-nav-link.disabled {
-      color: rgba(0, 0, 0, 0.65);
-      background-color: transparent; }
+        color: rgba(0, 0, 0, 0.5);
+        background-color: transparent;
+    }
   .navbar-light .show > .navbar-nav-link,
   .navbar-light .active > .navbar-nav-link,
   .navbar-light .navbar-nav-link.show,
@@ -2203,9 +2224,10 @@ label.custom-control {
       color: #0a6ebd; }
 
 .navbar-dark {
-  color: #fff;
-  background-color: #252b36;
-  border-bottom-color: rgba(255, 255, 255, 0.1); }
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #252b36;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
   .navbar-dark .navbar-nav .nav-link {
     color: #333; }
     .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
@@ -2218,13 +2240,15 @@ label.custom-control {
   .navbar-dark .navbar-nav .nav-link.active {
     color: #333; }
   .navbar-dark .navbar-nav-link {
-    color: #fff; }
+      color: rgba(255, 255, 255, 0.9);
+  }
     .navbar-dark .navbar-nav-link:hover, .navbar-dark .navbar-nav-link:focus {
       color: #fff;
       background-color: rgba(255, 255, 255, 0.1); }
     .navbar-dark .navbar-nav-link.disabled {
-      color: rgba(255, 255, 255, 0.65);
-      background-color: transparent; }
+        color: rgba(255, 255, 255, 0.5);
+        background-color: transparent;
+    }
   .navbar-dark .show > .navbar-nav-link,
   .navbar-dark .active > .navbar-nav-link,
   .navbar-dark .navbar-nav-link.show,

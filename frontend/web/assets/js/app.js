@@ -47,6 +47,7 @@ const App = function () {
     };
 
 
+
     // Sidebars
     // -------------------------
 
@@ -59,53 +60,37 @@ const App = function () {
 
         // Elements
         const sidebarMainElement = $('.sidebar-main'),
-              sidebarMainToggler = $('.sidebar-main-resize'),
-              sidebarMobileTogglerClass = 'sidebar-mobile-expanded',
-              resizeClass = 'sidebar-main-resized',
-              navSubmenuClass = 'nav-group-sub',
-              navSubmenuReversedClass = 'nav-group-sub-reversed',
-              submenuToggleClass = 'nav-group-sub-visible',
-              submenuElement = sidebarMainElement.find('.nav-sidebar > .nav-item-submenu');
+            sidebarMainToggler = $('.sidebar-main-resize'),
+            resizeClass = 'sidebar-main-resized',
+            unfoldClass = 'sidebar-main-unfold';
 
-        // Flip 2nd level if menu overflows
-        // bottom edge of browser window
-        const flipSubmenu = function() {
 
-            // When mouse enters
-            submenuElement.on('mouseenter', function() {
-                $(this).addClass(submenuToggleClass);
-                if(($(this).children('.' + navSubmenuClass).offset().top + $(this).find('.' + navSubmenuClass).filter(':visible').outerHeight()) > document.body.clientHeight) {
-                    $(this).children('.' + navSubmenuClass).addClass(navSubmenuReversedClass)
-                }
-            });
-
-            // When mouse leaves
-            submenuElement.on('mouseleave', function() {
-                $(this).removeClass(submenuToggleClass);
-                $(this).children('.' + navSubmenuClass).removeClass(navSubmenuReversedClass);
-            });
-        }
+        // Define variables
+        const unfoldDelay = 150;
+        let timerStart,
+            timerFinish;
 
         // Toggle classes on click
-        sidebarMainToggler.on('click', function(e) {
-            e.preventDefault();
-
-            // Toggle class on sidebar
-            if(!sidebarMainElement.hasClass(resizeClass)) {
-                sidebarMainElement.addClass(resizeClass);
-                sidebarMainElement.removeClass(sidebarMobileTogglerClass);
-                flipSubmenu();
-            }
-            else {
-                sidebarMainElement.removeClass(resizeClass + ' ' + sidebarMobileTogglerClass);
-                submenuElement.off('mouseenter mouseleave');
-            }
+        sidebarMainToggler.on('click', function (e) {
+            sidebarMainElement.toggleClass(resizeClass);
+            !sidebarMainElement.hasClass(resizeClass) && sidebarMainElement.removeClass(unfoldClass);
         });
 
-        // If main sidebar is resized by default
-        if(sidebarMainElement.hasClass(resizeClass)) {
-            flipSubmenu();
-        }
+        // Add class on mouse enter
+        sidebarMainElement.on('mouseenter', function () {
+            clearTimeout(timerFinish);
+            timerStart = setTimeout(function () {
+                sidebarMainElement.hasClass(resizeClass) && sidebarMainElement.addClass(unfoldClass);
+            }, unfoldDelay);
+        });
+
+        // Remove class on mouse leave
+        sidebarMainElement.on('mouseleave', function () {
+            clearTimeout(timerStart);
+            timerFinish = setTimeout(function () {
+                sidebarMainElement.removeClass(unfoldClass);
+            }, unfoldDelay);
+        });
     };
 
     // Toggle main sidebar
@@ -113,11 +98,11 @@ const App = function () {
 
         // Elements
         const sidebarMainElement = $('.sidebar-main'),
-              sidebarMainRestElements = $('.sidebar:not(.sidebar-main)'),
-              sidebarMainDesktopToggler = $('.sidebar-main-toggle'),
-              sidebarMainMobileToggler = $('.sidebar-mobile-main-toggle'),
-              sidebarCollapsedClass = 'sidebar-collapsed',
-              sidebarMobileExpandedClass = 'sidebar-mobile-expanded';
+            sidebarMainRestElements = $('.sidebar:not(.sidebar-main):not(.sidebar-component)'),
+            sidebarMainDesktopToggler = $('.sidebar-main-toggle'),
+            sidebarMainMobileToggler = $('.sidebar-mobile-main-toggle'),
+            sidebarCollapsedClass = 'sidebar-collapsed',
+            sidebarMobileExpandedClass = 'sidebar-mobile-expanded';
 
         // On desktop
         sidebarMainDesktopToggler.on('click', function(e) {
@@ -176,11 +161,26 @@ const App = function () {
         });
 
         // On mobile
-        sidebarRightMobileToggler.on('click', function(e) {
+        sidebarRightMobileToggler.on('click', function (e) {
             e.preventDefault();
             sidebarRightElement.toggleClass(sidebarMobileExpandedClass);
             sidebarRightRestElements.removeClass(sidebarMobileExpandedClass);
-        });                
+        });
+    };
+
+    // Toggle component sidebar
+    const sidebarComponentToggle = function () {
+
+        // Elements
+        const sidebarComponentElement = $('.sidebar-component'),
+            sidebarComponentMobileToggler = $('.sidebar-mobile-component-toggle'),
+            sidebarMobileExpandedClass = 'sidebar-mobile-expanded';
+
+        // Toggle classes
+        sidebarComponentMobileToggler.on('click', function (e) {
+            e.preventDefault();
+            sidebarComponentElement.toggleClass(sidebarMobileExpandedClass);
+        });
     };
 
 
@@ -188,7 +188,7 @@ const App = function () {
     // -------------------------
 
     // Sidebar navigation
-    const navigationSidebar = function() {
+    const navigationSidebar = function () {
 
         // Define default class names and options
         var navClass = 'nav-sidebar',
@@ -196,7 +196,6 @@ const App = function () {
             navItemOpenClass = 'nav-item-open',
             navLinkClass = 'nav-link',
             navSubmenuClass = 'nav-group-sub',
-            navSubmenuExpandedClass = 'nav-group-sub-visible',
             navScrollSpyClass = 'nav-scrollspy',
             navSlidingSpeed = 250;
 
@@ -207,19 +206,18 @@ const App = function () {
 
                 // Simplify stuff
                 var $target = $(this);
-                var $navSidebarMini = $('.sidebar-main-resized:not(.sidebar-mobile-expanded)').find('.' + navClass).children('.' + navItemClass);
 
                 // Collapsible
                 if($target.parent('.' + navItemClass).hasClass(navItemOpenClass)) {
-                    $target.parent('.' + navItemClass).not($navSidebarMini).removeClass(navItemOpenClass).children('.' + navSubmenuClass).slideUp(navSlidingSpeed);
+                    $target.parent('.' + navItemClass).removeClass(navItemOpenClass).children('.' + navSubmenuClass).slideUp(navSlidingSpeed);
                 }
                 else {
-                    $target.parent('.' + navItemClass).not($navSidebarMini).addClass(navItemOpenClass).children('.' + navSubmenuClass).slideDown(navSlidingSpeed);
+                    $target.parent('.' + navItemClass).addClass(navItemOpenClass).children('.' + navSubmenuClass).slideDown(navSlidingSpeed);
                 }
 
                 // Accordion
                 if ($target.parents('.' + navClass).data('nav-type') == 'accordion') {
-                    $target.parent('.' + navItemClass).not($navSidebarMini).siblings(':has(.' + navSubmenuClass + ')').removeClass(navItemOpenClass).children('.' + navSubmenuClass).slideUp(navSlidingSpeed);
+                    $target.parent('.' + navItemClass).siblings(':has(.' + navSubmenuClass + ')').removeClass(navItemOpenClass).children('.' + navSubmenuClass).slideUp(navSlidingSpeed);
                 }
             });
         });
@@ -256,49 +254,56 @@ const App = function () {
 
     // Tooltip
     const componentTooltip = function() {
-        $('[data-popup="tooltip"]').tooltip();
+        $('[data-popup="tooltip"]').tooltip({
+            boundary: '.page-content'
+        });
     };
 
     // Popover
     const componentPopover = function() {
-        $('[data-popup="popover"]').popover();
+        $('[data-popup="popover"]').popover({
+            boundary: '.page-content'
+        });
     };
 
     // "Go to top" button
     const componentToTopButton = function() {
 
         // Elements
-        const toTopContainer = $('body'),
-              scrollableContainer = $(window),
-              scrollableDistance = 250;
+        const toTopContainer = $('.content-wrapper'),
+            scrollableContainer = $('.content-inner'),
+            scrollableDistance = 250;
 
 
-        // Create button
-        toTopContainer.append($('<div class="btn-to-top"><button type="button" class="btn btn-dark btn-icon rounded-pill"><i class="icon-arrow-up8"></i></button></div>'));
+        // Append only if container exists
+        if (scrollableContainer) {
 
-        // Show and hide on scroll
-        const to_top_button = $('.btn-to-top'),
-              add_class_on_scroll = function() {
-                to_top_button.addClass('btn-to-top-visible');
-              },
-              remove_class_on_scroll = function() {
-                to_top_button.removeClass('btn-to-top-visible');
-              };
+            // Create button
+            toTopContainer.append($('<div class="btn-to-top"><button type="button" class="btn btn-dark btn-icon rounded-pill"><i class="icon-arrow-up8"></i></button></div>'));
 
-        scrollableContainer.on('scroll', function() { 
-            const scrollpos = scrollableContainer.scrollTop();
-            if (scrollpos >= scrollableDistance) {
-                add_class_on_scroll();
-            }
-            else {
-                remove_class_on_scroll();
-            }
-        });
+            // Show and hide on scroll
+            const to_top_button = $('.btn-to-top'),
+                add_class_on_scroll = function () {
+                    to_top_button.addClass('btn-to-top-visible');
+                },
+                remove_class_on_scroll = function () {
+                    to_top_button.removeClass('btn-to-top-visible');
+                };
 
-        // Scroll to top on click
-        $('.btn-to-top .btn').on('click', function() {
-            scrollableContainer.scrollTop(0);
-        });
+            scrollableContainer.on('scroll', function () {
+                const scrollpos = $(this).scrollTop();
+                if (scrollpos >= scrollableDistance) {
+                    add_class_on_scroll();
+                } else {
+                    remove_class_on_scroll();
+                }
+            });
+
+            // Scroll to top on click
+            $('.btn-to-top .btn').on('click', function () {
+                scrollableContainer.scrollTop(0);
+            });
+        }
     };
 
 
@@ -377,12 +382,12 @@ const App = function () {
 
         // Elements
         const buttonElement = '[data-action=fullscreen]',
-              buttonClass = 'list-icons-item',
-              buttonContainerClass = 'list-icons',
-              cardFullscreenClass = 'card-fullscreen',
-              collapsedClass = 'collapsed-in-fullscreen',
-              scrollableContainer = 'body',
-              fullscreenAttr = 'data-fullscreen';
+            buttonClass = 'list-icons-item',
+            buttonContainerClass = 'list-icons',
+            cardFullscreenClass = 'card-fullscreen',
+            collapsedClass = 'collapsed-in-fullscreen',
+            scrollableContainerClass = 'content-inner',
+            fullscreenAttr = 'data-fullscreen';
 
         // Configure
         $(buttonElement).on('click', function(e) {
@@ -399,14 +404,14 @@ const App = function () {
             if (!cardFullscreen.hasClass(cardFullscreenClass)) {
                 button.removeAttr(fullscreenAttr);
                 cardFullscreen.find('.' + collapsedClass).removeClass('show');
-                $(scrollableContainer).removeClass('overflow-hidden');
+                $('.' + scrollableContainerClass).removeClass('overflow-hidden');
                 button.parents('.' + buttonContainerClass).find('.' + buttonClass + ':not(' + buttonElement + ')').removeClass('d-none');
             }
             else {
                 button.attr(fullscreenAttr, 'active');
                 cardFullscreen.removeAttr('style');
                 cardFullscreen.find('.collapse:not(.show)').addClass('show ' + collapsedClass);
-                $(scrollableContainer).addClass('overflow-hidden');
+                $('.' + scrollableContainerClass).addClass('overflow-hidden');
                 button.parents('.' + buttonContainerClass).find('.' + buttonClass + ':not(' + buttonElement + ')').addClass('d-none');
             }
 
@@ -417,11 +422,16 @@ const App = function () {
     // Misc
     // -------------------------
 
+    // Re-declare dropdown boundary for app container
+    const dropdownMenus = function () {
+        $.fn.dropdown.Constructor.Default.boundary = '.page-content';
+    };
+
     // Dropdown submenus. Trigger on click
-    const dropdownSubmenu = function() {
+    const dropdownSubmenu = function () {
 
         // All parent levels require .dropdown-toggle class
-        $('.dropdown-menu').find('.dropdown-submenu').not('.disabled').find('.dropdown-toggle').on('click', function(e) {
+        $('.dropdown-menu').find('.dropdown-submenu').not('.disabled').find('.dropdown-toggle').on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
 
@@ -487,6 +497,7 @@ const App = function () {
             sidebarMainToggle();
             sidebarSecondaryToggle();
             sidebarRightToggle();
+            sidebarComponentToggle();
         },
 
         // Initialize all navigations
@@ -505,6 +516,7 @@ const App = function () {
 
         // Dropdown submenu
         initDropdowns: function() {
+            dropdownMenus();
             dropdownSubmenu();
         },
 

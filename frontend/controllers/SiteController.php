@@ -68,6 +68,20 @@ class SiteController extends Controller
     }
 
     /**
+     * Check if the user is already authenticated
+     * @param \yii\base\Action $action
+     * @return bool|void|\yii\web\Response
+     */
+    public function beforeAction($action)
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->redirect('/user-panel/index');
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Displays homepage.
      *
      * @return mixed
