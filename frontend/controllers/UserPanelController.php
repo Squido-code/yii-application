@@ -36,10 +36,26 @@ class UserPanelController extends \yii\web\Controller
         return $this->render('index', ['subscription' => $subscription]);
     }
 
-//    public function actionProfile()
-//    {
-//
-//        return $this->render('profile', ['subscription' => $subscription]);
-//    }
+    public function actionProfile()
+    {
+        $subscription = UserBilling::getSubscription();
+        return $this->render('profile', ['subscription' => $subscription]);
+    }
+
+    public function actionSubscriptions()
+    {
+        $payment = Yii::$app->request->get('payment');
+        if (isset($payment)) {
+            switch ($payment) {
+                case 'success':
+                    Yii::$app->session->setFlash('success', 'Payment success');
+                    return $this->redirect('index')->send();
+                case 'cancel':
+                    Yii::$app->session->setFlash('error', 'Payment cancelled');
+                    break;
+            }
+        }
+        return $this->render('subscriptions');
+    }
 
 }

@@ -91,30 +91,6 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    /**
-     * Logs in a user.
-     *
-     * @return mixed
-     */
-//    public function actionLogin()
-//    {
-//        if (!Yii::$app->user->isGuest) {
-//            return $this->goHome();
-//        }
-//
-//        $models = new LoginForm();
-//
-//        if ($models->load(Yii::$app->request->post()) && $models->login()) {
-//
-//            return $this->render('//user-panel/index');
-//        }
-//
-//        $models->password = '';
-//
-//        return $this->render('login', [
-//            'models' => $models,
-//        ]);
-//    }
 
     /**
      * Logs out the current user.
@@ -163,25 +139,6 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
-//    public function actionSignup()
-//    {
-//        $models = new SignupForm();
-//
-//        if ($models->load(Yii::$app->request->post()) && $models->signup()) {
-//
-//            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-//            return $this->goHome();
-//        }
-//
-//        return $this->render('signup', [
-//            'models' => $models,
-//        ]);
-//    }
 
     /**
      * Requests password reset.

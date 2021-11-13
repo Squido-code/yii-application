@@ -34,7 +34,7 @@ use yii\helpers\Html;
 
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="profile" class="dropdown-item">Perfil</a>
-                <a href="#" class="dropdown-item">Subscripciones</a>
+                <a href="subscriptions" class="dropdown-item">Subscripciones</a>
                 <div class="dropdown-divider"></div>
                 <?= '<a>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
