@@ -2,7 +2,7 @@
 
 namespace frontend\controllers;
 
-class SubcripcionController extends \yii\web\Controller
+class SubscripcionController extends \yii\web\Controller
 {
     public function actionBronze()
     {

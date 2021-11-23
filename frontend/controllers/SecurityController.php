@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace frontend\controllers;
+namespace Da\User\Controller;
 
 use Da\User\Contracts\AuthClientInterface;
 use Da\User\Event\FormEvent;
@@ -147,7 +147,7 @@ class SecurityController extends Controller
 
                 $this->trigger(FormEvent::EVENT_AFTER_LOGIN, $event);
 
-                return $this->redirect(['/user-panel/index']);
+                return $this->goBack();
             } else {
                 $this->trigger(FormEvent::EVENT_FAILED_LOGIN, $event);
             }

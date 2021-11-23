@@ -3,27 +3,26 @@
 namespace frontend\controllers;
 
 use app\models\UserBilling;
-use Da\User\Model\User;
 use Yii;
+use yii\filters\AccessControl;
 
 class UserPanelController extends \yii\web\Controller
 {
-    public $user;
+    public $layout = 'private';
 
-    /** control the access to the user panel allowing only to login users
-     * @param \yii\base\Action $action
-     * @return bool|\yii\web\Response
-     */
-    public function beforeAction($action)
+    public function behaviors()
     {
-        if (Yii::$app->user->isGuest) {
-            return $this->redirect('/user/login', 302)->send();
-        } else {
-            $user_id = Yii::$app->user->id;
-            $this->user = User::find()->where(['id' => $user_id])->one();
-            $this->layout = '@app/views/layouts/private';
-            return true;
-        }
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ]
+            ]
+        ];
     }
 
     /**
@@ -36,11 +35,16 @@ class UserPanelController extends \yii\web\Controller
         return $this->render('index', ['subscription' => $subscription]);
     }
 
+    /**
+     * Render user login information and the current subscription plan
+     * @return string
+     */
     public function actionProfile()
     {
         $subscription = UserBilling::getSubscription();
         return $this->render('profile', ['subscription' => $subscription]);
     }
+
 
     public function actionSubscriptions()
     {

@@ -15,8 +15,7 @@
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-//        ['label' => 'About', 'url' => ['/site/about']],
-//        ['label' => 'Contact', 'url' => ['/site/contact']],
+
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/user/register']];
@@ -34,13 +33,13 @@
         if (UserBilling::getSubscription() !== null) {
             switch (UserBilling::getSubscription()) {
                 case Yii::$app->params['idSubBronze']:
-                    $menuItems[] = ['label' => 'Ventajas Bronze', 'url' => ['/subcripcion/bronze']];
+                    $menuItems[] = ['label' => 'Ventajas Bronze', 'url' => ['/subscripcion/bronze']];
                     break;
                 case Yii::$app->params['idSubSilver']:
-                    $menuItems[] = ['label' => 'Ventajas Silver', 'url' => ['/subcripcion/silver']];
+                    $menuItems[] = ['label' => 'Ventajas Silver', 'url' => ['/subscripcion/silver']];
                     break;
                 case Yii::$app->params['idSubGold']:
-                    $menuItems[] = ['label' => 'Ventajas Gold', 'url' => ['/subcripcion/gold']];
+                    $menuItems[] = ['label' => 'Ventajas Gold', 'url' => ['/subscripcion/gold']];
                     break;
             }
         }

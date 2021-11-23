@@ -7,9 +7,6 @@ use yii\helpers\Html;
 <!-- Main navbar -->
 <div class="navbar navbar-expand-lg navbar-dark navbar-static">
     <div class="d-flex flex-1 d-lg-none">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
-            <i class="icon-paragraph-justify3"></i>
-        </button>
         <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
             <i class="icon-transmission"></i>
         </button>
@@ -33,11 +30,11 @@ use yii\helpers\Html;
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="profile" class="dropdown-item">Perfil</a>
+                <a href="profile" class="dropdown-item">Profile</a>
                 <a href="subscriptions" class="dropdown-item">Subscripciones</a>
                 <div class="dropdown-divider"></div>
                 <?= '<a>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
+                . Html::beginForm(['/user/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
                     'Logout',
                     ['class' => 'btn btn-link logout']

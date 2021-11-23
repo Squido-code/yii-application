@@ -14,6 +14,7 @@ if (YII_ENV_DEV) {
 
 return [
     'id' => 'app-frontend',
+    'name' => 'Tu web',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
@@ -27,7 +28,7 @@ return [
             ],
             'controllerMap' => [
                 'security' => [
-                    'class' => frontend\controllers\SecurityController::class,
+                    'class' => Da\User\Controller\SecurityController::class,
                     'on beforeAuthenticate' => ['app\components\SocialNetworkHandler', 'beforeAuthenticate'],
                 ],
             ],
