@@ -78,12 +78,12 @@ class UserBilling extends \yii\db\ActiveRecord
     private static function subscriptionIdToName($id)
     {
         switch ($id) {
-            case Yii::$app->params['idSubBronze']:
-                return 'Bronze';
-            case Yii::$app->params['idSubSilver']:
-                return 'Silver';
-            case Yii::$app->params['idSubGold']:
-                return 'Gold';
+            case Yii::$app->params['id_sub_1']:
+                return Yii::$app->params['sub_name_1'];
+            case Yii::$app->params['id_sub_2']:
+                return Yii::$app->params['sub_name_2'];
+            case Yii::$app->params['id_sub_3']:
+                return Yii::$app->params['sub_name_3'];
         }
         return null;
     }

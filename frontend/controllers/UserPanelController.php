@@ -9,6 +9,7 @@ use yii\filters\AccessControl;
 class UserPanelController extends \yii\web\Controller
 {
     public $layout = 'private';
+    public $subscription = null;
 
     public function behaviors()
     {
@@ -25,14 +26,22 @@ class UserPanelController extends \yii\web\Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->subscription = UserBilling::getSubscription();
+        }
+        return null;
+    }
+
     /**
      * Render user panel index
      * @return string
      */
     public function actionIndex()
     {
-        $subscription = UserBilling::getSubscription();
-        return $this->render('index', ['subscription' => $subscription]);
+
+        return $this->render('index', ['subscription' => $this->subscription]);
     }
 
     /**
@@ -41,8 +50,7 @@ class UserPanelController extends \yii\web\Controller
      */
     public function actionProfile()
     {
-        $subscription = UserBilling::getSubscription();
-        return $this->render('profile', ['subscription' => $subscription]);
+        return $this->render('profile', ['subscription' => $this->subscription]);
     }
 
 
@@ -61,5 +69,16 @@ class UserPanelController extends \yii\web\Controller
         }
         return $this->render('subscriptions');
     }
+
+    public function actionMenu()
+    {
+        return $this->render('menu');
+    }
+
+    public function actionCaracteristicas()
+    {
+        return $this->render('caracteristicas');
+    }
+
 
 }

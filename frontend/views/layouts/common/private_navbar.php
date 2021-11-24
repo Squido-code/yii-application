@@ -13,7 +13,7 @@ use yii\helpers\Html;
     </div>
 
     <div class="navbar-brand text-center text-lg-left">
-        <a href="index.html" class="d-inline-block">
+        <a href="/user-panel/index" class="d-inline-block">
             <img src="../../../../global_assets/images/logo_light.png" class="d-none d-sm-block" alt="Logo">
             <img src="../../../../global_assets/images/logo_icon_light.png" class="d-sm-none" alt="Logo">
         </a>
@@ -21,17 +21,17 @@ use yii\helpers\Html;
     <ul class="navbar-nav flex-row ml-auto justify-content-end align-items-center">
 
         <li class="nav-item nav-item-dropdown-lg dropdown dropdown-user h-100">
-            <a href="#"
-               class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle d-inline-flex align-items-center h-100"
-               data-toggle="dropdown">
+            <a
+                    class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle d-inline-flex align-items-center h-100"
+                    data-toggle="dropdown">
                 <img src="../../../../global_assets/images/placeholders/placeholder.png" class="rounded-pill mr-lg-2"
                      height="34" alt="">
                 <span class="d-none d-lg-inline-block"><?= Yii::$app->user->identity->username ?></span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="profile" class="dropdown-item">Profile</a>
-                <a href="subscriptions" class="dropdown-item">Subscripciones</a>
+                <a href="/user-panel/profile" class="dropdown-item">Profile</a>
+                <a href="/user-panel/subscriptions" class="dropdown-item">Subscripciones</a>
                 <div class="dropdown-divider"></div>
                 <?= '<a>'
                 . Html::beginForm(['/user/logout'], 'post', ['class' => 'form-inline'])
@@ -40,7 +40,7 @@ use yii\helpers\Html;
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
-                . '</a>'; ?>
+                . '</a>' ?>
             </div>
         </li>
     </ul>

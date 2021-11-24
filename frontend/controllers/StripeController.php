@@ -8,6 +8,8 @@ class StripeController extends \yii\web\Controller
 {
     private $urls = null;
 
+    public $layout = 'private';
+
     public function init()
     {
         parent::init();
@@ -70,13 +72,13 @@ class StripeController extends \yii\web\Controller
     {
         switch ($id) {
             case '1':
-                return Yii::$app->params['idSubBronze'];
+                return Yii::$app->params['id_sub_1'];
 
             case '2':
-                return Yii::$app->params['idSubSilver'];
+                return Yii::$app->params['id_sub_2'];
 
             case '3':
-                return Yii::$app->params['idSubGold'];
+                return Yii::$app->params['id_sub_3'];
 
         }
         return null;
@@ -102,7 +104,7 @@ class StripeController extends \yii\web\Controller
 
         if (YII_ENV_DEV) {
             return $urls = [
-                'success_url' => 'https://practicas.com/user-panel/subscriptions?payment=success',
+                'success_url' => 'https://practicas.com/stripe/success',
                 'cancel_url' => 'https://practicas.com/user-panel/subscriptions?payment=cancel',
             ];
         } else {

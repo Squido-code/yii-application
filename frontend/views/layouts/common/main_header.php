@@ -32,13 +32,13 @@
         $menuItems[] = ['label' => 'User panel', 'url' => ['/user-panel/index']];
         if (UserBilling::getSubscription() !== null) {
             switch (UserBilling::getSubscription()) {
-                case Yii::$app->params['idSubBronze']:
+                case Yii::$app->params['sub_name_1']:
                     $menuItems[] = ['label' => 'Ventajas Bronze', 'url' => ['/subscripcion/bronze']];
                     break;
-                case Yii::$app->params['idSubSilver']:
+                case Yii::$app->params['sub_name_2']:
                     $menuItems[] = ['label' => 'Ventajas Silver', 'url' => ['/subscripcion/silver']];
                     break;
-                case Yii::$app->params['idSubGold']:
+                case Yii::$app->params['sub_name_3']:
                     $menuItems[] = ['label' => 'Ventajas Gold', 'url' => ['/subscripcion/gold']];
                     break;
             }
