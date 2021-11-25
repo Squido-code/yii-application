@@ -29,9 +29,14 @@ class UserPanelController extends \yii\web\Controller
     public function beforeAction($action)
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->subscription = UserBilling::getSubscription();
+
+            $subscription = UserBilling::getSubscription();
+
+            if ($subscription !== null) {
+                return $this->subscription = $subscription;
+            }
         }
-        return null;
+        return true;
     }
 
     /**

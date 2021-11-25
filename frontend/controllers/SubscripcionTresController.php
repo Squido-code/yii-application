@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use app\models\UserBilling;
+use Yii;
 use yii\filters\AccessControl;
 
 class SubscripcionTresController extends \yii\web\Controller

@@ -79,6 +79,19 @@ class WebhookController extends \yii\web\Controller
                 $model->sub_active = 1;
                 $model->save();
                 break;
+
+            case 'customer.subscription.deleted':
+                $paymentIntent = $event->data->object;
+                $subscription = $paymentIntent->plan->id;
+                $customerId = $paymentIntent->customer;
+
+                $model = UserBilling::findOne(['stripe_customer' => $customerId]);
+                if ($model->sub_type == $subscription) {
+                    $model->sub_type = null;
+                    $model->sub_active = 0;
+                    $model->save();
+                }
+                break;
             default:
                 Yii::debug('Received unknown event type ' . $event->type);
         }

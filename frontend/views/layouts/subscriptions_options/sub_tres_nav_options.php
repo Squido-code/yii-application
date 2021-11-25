@@ -1,6 +1,6 @@
 <ul class="nav nav-group-sub" data-submenu-title="Menu levels">
     <li class="nav-item"><a href="/subscripcion-tres/gestion" class="nav-link"><i class="icon-IE"></i>gestión</a></li>
-    <li class="nav-item nav-item-submenu">
+    <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
         <a href="#" class="nav-link"><i class="icon-firefox"></i> Datos</a>
         <ul class="nav nav-group-sub">
             <li class="nav-item"><a href="/subscripcion-tres/estadisticas" class="nav-link"><i class="icon-android"></i>

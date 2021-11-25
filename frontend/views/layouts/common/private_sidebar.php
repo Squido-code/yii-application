@@ -58,7 +58,7 @@
                     <div class="text-uppercase font-size-xs line-height-xs">Opciones</div>
                     <i class="icon-menu" title="Layout options"></i></li>
                 <?php if (isset($this->context->subscription)) {
-                    echo '<li class="nav-item nav-item-submenu">';
+                    echo '<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">';
                     echo '<a href="#" class="nav-link"><i class="icon-stack2"></i> <span>' . $this->context->subscription . '</span></a>';
                     switch ($this->context->subscription) {
                         case Yii::$app->params['sub_name_1']:
@@ -77,9 +77,10 @@
                 <li class="nav-item nav-item-submenu ">
                     <a href="#" class="nav-link"><i class="icon-tree5"></i> <span>Información complementaria</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Page layouts">
-                        <li class="nav-item"><a href="menu" class="nav-link">menú</a></li>
+                        <li class="nav-item"><a href="/user-panel/menu" class="nav-link">menú</a></li>
                         <li class="nav-item-divider"></li>
-                        <li class="nav-item"><a href="caracteristicas" class="nav-link">características</a></li>
+                        <li class="nav-item"><a href="/user-panel/caracteristicas" class="nav-link">características</a>
+                        </li>
                     </ul>
                 </li>
                 <!-- /layout -->

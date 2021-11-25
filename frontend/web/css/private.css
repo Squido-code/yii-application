@@ -40,6 +40,10 @@ a.desc:after {
     border-bottom-width: 0;
 }
 
+.stay-open {
+    display: block !important;
+}
+
 /*body{*/
 /*    background-image: url("/img/background_private.png");*/
 /*    background-position: center; */
