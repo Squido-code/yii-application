@@ -1,19 +1,24 @@
 <?php
 
-use common\widgets\Alert;
 use yii\helpers\Html;
 
 ?>
-<?= Alert::widget() ?>
 <!-- Page header -->
 <div class="page-header page-header-light">
     <div class="page-header-content container d-sm-flex">
         <div class="page-title">
             <h4><span class="font-weight-semibold">Profile</span></h4>
         </div>
-        <div class="my-sm-auto ml-sm-auto mb-3 mb-sm-0">
-            <?= Html::a('Edit login', ['/user-update/index'], ['class' => 'btn btn-primary w-100 w-sm-auto']) ?>
-        </div>
+        <!--        <div class="my-sm-auto ml-sm-auto mb-3 mb-sm-0">-->
+        <!--            --><? //= Html::a('Edit login', ['/user-update/index'], ['class' => 'btn btn-primary w-100 w-sm-auto']) ?>
+        <!--        </div>-->
+        <form action="/stripe/client-session" method="POST">
+
+            <input type="hidden" id="session-id" name="session_id" value=""/>
+
+            <button id="checkout-and-portal-button" type="submit">Manage your billing information</button>
+
+        </form>
     </div>
 </div>
 <!-- /page header -->

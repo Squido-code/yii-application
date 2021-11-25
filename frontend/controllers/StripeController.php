@@ -2,6 +2,10 @@
 
 namespace frontend\controllers;
 
+use app\models\UserBilling;
+use Error;
+use Stripe\BillingPortal\Session;
+use Stripe\Stripe;
 use Yii;
 
 class StripeController extends \yii\web\Controller
@@ -16,6 +20,38 @@ class StripeController extends \yii\web\Controller
         $this->urls = $this->enviromentUrl();
     }
 
+    public function actionClientSession()
+    {
+        Stripe::setApiKey(Yii::$app->params['stripeApiKey']);
+
+        header('Content-Type: application/json');
+
+        $YOUR_DOMAIN = 'https://practicas.com/stripe/success';
+        try {
+//            $checkout_session = \Stripe\Checkout\Session::retrieve($_POST['session_id']);
+            $return_url = $YOUR_DOMAIN;
+
+//            // Authenticate your user.
+//            $session = Session::create([
+//                'customer' => $checkout_session->customer,
+//                'return_url' => $return_url,
+//            ]);
+            // Authenticate your user.
+            $session = Session::create([
+                'customer' => UserBilling::getCustomer(),
+                'return_url' => $return_url,
+            ]);
+
+            header("HTTP/1.1 303 See Other");
+            header("Location: " . $session->url);
+
+            return $this->redirect($session->url)->send();
+        } catch (Error $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+
+    }
 
     public function actionDonacion()
     {
@@ -95,7 +131,7 @@ class StripeController extends \yii\web\Controller
     }
 
     /**
-     * Return the right succes/cancel url depends on the environment
+     * Return the right success/cancel url depending on the environment
      * @return string[]
      */
     private function enviromentUrl()

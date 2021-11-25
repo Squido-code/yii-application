@@ -64,6 +64,13 @@ class UserBilling extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    public static function getCustomer()
+    {
+        $id = Yii::$app->user->id;
+        $model = self::findOne(['user_id' => $id]);
+        return $model->stripe_customer;
+    }
+
     public static function getSubscription()
     {
         $id = Yii::$app->user->id;
