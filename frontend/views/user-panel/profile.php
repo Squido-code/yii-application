@@ -50,7 +50,7 @@ use yii\helpers\Html;
             echo '</div>';
             echo '<div class="card-body text-center">';
             echo '<h6 class="font-weight-semibold text-center">' . $subscription . '</h6>';
-            echo HTMl::img(Yii::getAlias('@web') . '/img/' . $subscription . '.jpg', ['class' => 'card-img-top', 'style' => 'width: 220px; height: 120px;']);
+            echo HTMl::img('/img/' . $subscription . '.jpg', ['class' => 'card-img-top', 'style' => 'width: 220px; height: 120px;']);
             echo '</div>';
             echo '</div>';
             echo '</div>';
