@@ -32,7 +32,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/checkout.js');
     <div class="row text-center ">
         <div class="col-md-3 m-auto">
             <div class="card bg-light" style="width: 18rem;">
-                <?= HTMl::img(Yii::getAlias('@web') . '/img/bronze.jpg', ['class' => 'card-img-top', 'style' => 'width: 286px; height: 180px;']) ?>
+                <?= HTMl::img(Yii::getAlias('@web') . '/img/Bronze.jpg', ['class' => 'card-img-top', 'style' => 'width: 286px; height: 180px;']) ?>
                 <div class="card-body">
                     <h5 class="card-title">Subscripción bronze</h5>
                     <button id="bronze" class="btn btn-primary btn-xs">Únete por 1€</button>
@@ -41,7 +41,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/checkout.js');
         </div>
         <div class="col-md-3 m-auto">
             <div class="card bg-light" style="width: 18rem;">
-                <?= HTMl::img(Yii::getAlias('@web') . '/img/silver.jpg', ['class' => 'card-img-top ', 'style' => 'width: 286px; height: 180px;']) ?>
+                <?= HTMl::img(Yii::getAlias('@web') . '/img/Silver.jpg', ['class' => 'card-img-top ', 'style' => 'width: 286px; height: 180px;']) ?>
                 <div class="card-body">
                     <h5 class="card-title">Subscripción silver</h5>
                     <button id="silver" class="btn btn-primary btn-xs">Únete por 5€</button>
@@ -50,7 +50,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/checkout.js');
         </div>
         <div class="col-md-3 m-auto">
             <div class="card bg-light" style="width: 18rem;">
-                <?= HTMl::img(Yii::getAlias('@web') . '/img/gold.jpg', ['class' => 'card-img-top', 'style' => 'width: 286px; height: 180px;']) ?>
+                <?= HTMl::img(Yii::getAlias('@web') . '/img/Gold.jpg', ['class' => 'card-img-top', 'style' => 'width: 286px; height: 180px;']) ?>
                 <div class="card-body">
                     <h5 class="card-title">Subscripción gold</h5>
                     <button id="gold" class="btn btn-primary btn-xs">Únete por 10€</button>
