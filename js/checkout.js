@@ -6,7 +6,6 @@ const gold = document.querySelector('#gold')
 
 
 bronze.addEventListener('click', () => {
-    alert("boton funciona")
     fetch('/stripe/checkout?subscription=1', {
         method: 'POST',
     })
