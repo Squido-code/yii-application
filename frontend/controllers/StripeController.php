@@ -80,6 +80,7 @@ class StripeController extends \yii\web\Controller
 
     public function actionCheckout()
     {
+        Yii::info("Stripe Checkout init");
         $productPrice = $this->getProduct(
             Yii::$app->request->get('subscription'));
 
