@@ -1,4 +1,5 @@
 # yii console commands
+composer.lock
 
 /yii_test
 /yii_test.bat
