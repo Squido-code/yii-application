@@ -23,6 +23,7 @@ donacion.addEventListener('click', () => {
 })
 
 bronze.addEventListener('click', () => {
+    alert("boton funciona")
     fetch('/stripe/checkout?subscription=1', {
         method: 'POST',
     })
