@@ -142,12 +142,12 @@ class StripeController extends \yii\web\Controller
         if (YII_ENV_DEV) {
             return $urls = [
                 'success_url' => 'https://practicas.com/stripe/success',
-                'cancel_url' => 'https://practicas.com/user-panel/subscriptions?payment=cancel',
+                'cancel_url' => 'https://practicas.com/stripe/cancel',
             ];
         } else {
             return $urls = [
                 'success_url' => 'https://test.maia.rocks/stripe/success',
-                'cancel_url' => 'https://test.maia.rocks/user-panel/subscriptions?payment=cancel',
+                'cancel_url' => 'https://test.maia.rocks/user-panel/stripe/cancel',
             ];
         }
     }
