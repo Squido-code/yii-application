@@ -10,7 +10,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/checkout.js');
 <?= Alert::widget() ?>
 
 <div class="container">
-    <h1 class="text-center p-3">Subscriptions</h1>
+    <h1 class="text-center p-3">Subscripciones</h1>
     <hr>
     <div class="row text-center ">
         <div class="col-md-3 m-auto">
