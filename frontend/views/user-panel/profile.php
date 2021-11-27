@@ -10,7 +10,11 @@ use yii\helpers\Html;
             <h4><span class="font-weight-semibold">Profile</span></h4>
         </div>
         <div class="my-sm-auto ml-sm-auto mb-3 mb-sm-0">
-            <?= Html::a('Gestiona tu informacion de pago', ['/stripe/client-session'], ['class' => 'btn btn-primary w-100 w-sm-auto']) ?>
+            <?php if (isset($subscription)) {
+
+                echo Html::a('Gestiona tu informacion de pago', ['/stripe/client-session'], ['class' => 'btn btn-primary w-100 w-sm-auto']);
+            }
+            ?>
         </div>
     </div>
 </div>
