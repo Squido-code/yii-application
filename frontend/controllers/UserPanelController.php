@@ -39,6 +39,7 @@ class UserPanelController extends \yii\web\Controller
         return true;
     }
 
+
     /**
      * Render user panel index
      * @return string
