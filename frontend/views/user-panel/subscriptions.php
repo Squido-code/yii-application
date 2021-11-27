@@ -1,13 +1,11 @@
 <?php
 
-use common\widgets\Alert;
 use yii\helpers\Html;
 
 $this->title = 'subscriptions';
 $this->registerJsFile('https://js.stripe.com/v3/');
 $this->registerJsFile(Yii::getAlias('@web') . '/js/checkout.js');
 ?>
-<?= Alert::widget() ?>
 
 <div class="container">
     <h1 class="text-center p-3">Subscripciones</h1>
