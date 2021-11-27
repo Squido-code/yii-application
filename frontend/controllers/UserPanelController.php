@@ -8,7 +8,7 @@ use yii\filters\AccessControl;
 
 class UserPanelController extends \yii\web\Controller
 {
-    public $layout = 'private';
+    public $layout;
     public $subscription = null;
 
     public function behaviors()
@@ -19,7 +19,12 @@ class UserPanelController extends \yii\web\Controller
                 'rules' => [
                     [
                         'allow' => true,
+                        'actions' => ['index', 'profile', 'subscriptions', 'menu', 'caracteristicas'],
                         'roles' => ['@']
+                    ],
+                    [
+                        'allow' => false,
+                        'roles' => ['?']
                     ],
                 ]
             ]
@@ -29,14 +34,14 @@ class UserPanelController extends \yii\web\Controller
     public function beforeAction($action)
     {
         if (!Yii::$app->user->isGuest) {
-
+            $this->layout = 'private';
             $subscription = UserBilling::getSubscription();
 
             if ($subscription !== null) {
                 return $this->subscription = $subscription;
             }
         }
-        return true;
+        return parent::beforeAction($action);
     }
 
 
