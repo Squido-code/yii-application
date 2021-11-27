@@ -75,12 +75,12 @@ class UserBilling extends \yii\db\ActiveRecord
     {
         $id = Yii::$app->user->id;
         $model = self::findOne(['user_id' => $id]);
-//        echo print_r($model->sub_type);exit;
-        if ($model->sub_type !== "") {
+        if (isset($model)) {
+            if ($model->sub_type !== "") {
 
-            return self::subscriptionIdToName($model->sub_type);
+                return self::subscriptionIdToName($model->sub_type);
+            }
         }
-
         return null;
     }
 

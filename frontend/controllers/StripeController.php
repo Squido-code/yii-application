@@ -146,7 +146,7 @@ class StripeController extends \yii\web\Controller
         } else {
             return $urls = [
                 'success_url' => 'https://test.maia.rocks/stripe/success',
-                'cancel_url' => 'https://test.maia.rocks/stripe/cancel',
+                'cancel_url' => 'https://test.maia.rocks/user-panel/subscriptions?payment=cancel',
             ];
         }
     }
