@@ -20,10 +20,10 @@ use yii\widgets\ActiveForm;
  */
 
 $this->title = Yii::t('usuario', 'Login');
-//$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
-<?= $this->render('/shared/_alert', ['module' => Yii::$app->getModule('user')]) ?>
+<?= Yii::$app->session->getFlash('success'); ?>
 
 <div class="row">
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">

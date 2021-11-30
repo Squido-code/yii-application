@@ -57,7 +57,7 @@ class User extends BaseUser
     {
         // self::STATUS_INACTIVE changed to STATUS_ACTIVE allow register without email verification.
         return array_merge(parent::rules(), [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ]);
 
@@ -68,8 +68,8 @@ class User extends BaseUser
      */
     public static function findIdentity($id)
     {
-//        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
-        return static::findOne(['id' => $id]);
+        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+//        return static::findOne(['id' => $id]);
     }
 
     /**

@@ -22,6 +22,8 @@ return [
         'user' => [
             'class' => Da\User\Module::class,
             'administratorPermissionName' => 'admin',
+//            'enableEmailConfirmation' => 'false',
+//            'enableRegistration'=>'false',
             'classMap' => [
                 'User' => frontend\models\User::class,
                 'RegistrationForm' => frontend\models\RegistrationForm::class,
@@ -31,8 +33,21 @@ return [
                     'class' => Da\User\Controller\SecurityController::class,
                     'on beforeAuthenticate' => ['app\components\SocialNetworkHandler', 'beforeAuthenticate'],
                 ],
+                'registration' => [
+                    'class' => frontend\controllers\RegistrationController::class,
+                    'on ' . \Da\User\Event\FormEvent::EVENT_AFTER_REGISTER => function (\Da\User\Event\FormEvent $event) {
+                        \Yii::$app->controller->redirect(['/user/security/login']);
+                        \Yii::$app->end();
+                    },
+                ],
+                'mailParams' => [
+                    'fromEmail' => function () {
+                        return [Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']];
+                    }
+                ],
             ],
-            'enableEmailConfirmation' => 'false',
+
+//            'enableEmailConfirmation' => 'false',
             'allowUnconfirmedEmailLogin' => 'false',
         ],
         'utility' => [
@@ -79,7 +94,15 @@ return [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'encryption' => 'tls',
+                'host' => 'smtp.ethereal.email',
+                'port' => '587',
+                'username' => 'bgdmnnqkwtfsq22e@ethereal.email',
+                'password' => 'bqQW8UsXfgj3KGspHr',
+            ],
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
