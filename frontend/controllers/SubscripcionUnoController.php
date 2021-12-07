@@ -26,6 +26,11 @@ class SubscripcionUnoController extends \yii\web\Controller
         ];
     }
 
+    /**
+     * Function checks before load if the user has the right subscription
+     * @param \yii\base\Action $action
+     * @return bool|mixed|null
+     */
     public function beforeAction($action)
     {
         $subscription = null;

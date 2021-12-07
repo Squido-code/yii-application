@@ -20,6 +20,10 @@ class StripeController extends \yii\web\Controller
         $this->urls = $this->enviromentUrl();
     }
 
+    /**
+     * Controller that manage the session with Stripe
+     * @throws \Stripe\Exception\ApiErrorException
+     */
     public function actionClientSession()
     {
         Stripe::setApiKey(Yii::$app->params['stripeApiKey']);
@@ -28,14 +32,9 @@ class StripeController extends \yii\web\Controller
 
         $YOUR_DOMAIN = 'https://practicas.com/stripe/success';
         try {
-//            $checkout_session = \Stripe\Checkout\Session::retrieve($_POST['session_id']);
+
             $return_url = $YOUR_DOMAIN;
 
-//            // Authenticate your user.
-//            $session = Session::create([
-//                'customer' => $checkout_session->customer,
-//                'return_url' => $return_url,
-//            ]);
             // Authenticate your user.
             $session = Session::create([
                 'customer' => UserBilling::getCustomer(),
@@ -53,6 +52,11 @@ class StripeController extends \yii\web\Controller
 
     }
 
+    /**
+     * Controller that creatates a single payment with Stripe
+     * @return false|string
+     * @throws \Stripe\Exception\ApiErrorException
+     */
     public function actionDonacion()
     {
         $stripe = new \Stripe\StripeClient(
@@ -78,6 +82,11 @@ class StripeController extends \yii\web\Controller
         return json_encode($session);
     }
 
+    /**
+     * Controller that creates de sesion info depending thensubscription applied
+     * @return false|string
+     * @throws \Stripe\Exception\ApiErrorException
+     */
     public function actionCheckout()
     {
         Yii::info("Stripe Checkout init");
@@ -105,6 +114,11 @@ class StripeController extends \yii\web\Controller
 
     }
 
+    /**
+     * Transform the id retrieve from get to the proper subscription id
+     * @param $id
+     * @return mixed|null
+     */
     private function getProduct($id)
     {
         switch ($id) {
@@ -121,11 +135,19 @@ class StripeController extends \yii\web\Controller
         return null;
     }
 
+    /**
+     * Render the success page payment
+     * @return string
+     */
     public function actionSuccess()
     {
         return $this->render('success');
     }
 
+    /**
+     * Render de cancel payment page
+     * @return string
+     */
     public function actionCancel()
     {
         return $this->render('cancel');

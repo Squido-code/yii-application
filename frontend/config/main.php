@@ -47,7 +47,7 @@ return [
                 ],
             ],
 
-//            'enableEmailConfirmation' => 'false',
+            'enableEmailConfirmation' => 'true',
             'allowUnconfirmedEmailLogin' => 'false',
         ],
         'utility' => [
