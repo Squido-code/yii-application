@@ -30,7 +30,7 @@ class StripeController extends \yii\web\Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'https://practicas.com/stripe/success';
+        $YOUR_DOMAIN = $this->urls['success_url'];
         try {
 
             $return_url = $YOUR_DOMAIN;
